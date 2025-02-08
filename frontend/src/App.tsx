@@ -1,10 +1,7 @@
-import { Button } from "@/components/ui/button";
+import { AppRoutes } from "@/routers/router";
 
 export default function App() {
   return (
-    <>
-      <p className="text-red-500">teste</p>
-      <Button>Click me</Button>
-    </>
+    <AppRoutes />
   );
 }
