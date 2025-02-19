@@ -5,6 +5,7 @@ import { DB_HOST, DB_NAME, DB_PASSWORD, DB_USER } from 'src/config/consts/consts
 
 import { UserModule } from 'src/modules/user/user.module';
 import { ChurchModule } from 'src/modules/church/church.module';
+import { EnvConfigModule } from './shared/infrastructure/env-config/env-config.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ChurchModule } from 'src/modules/church/church.module';
     }),
     UserModule,
     ChurchModule,
+    EnvConfigModule,
   ],
   controllers: [],
   providers: [],
