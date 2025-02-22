@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from 'src/modules/user/user.module';
 import { ChurchModule } from 'src/modules/church/church.module';
 import { configDB } from './config/db/config.db';
+import { InstrumentModule } from './modules/instrument/instrument.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { configDB } from './config/db/config.db';
     }),
     UserModule,
     ChurchModule,
+    InstrumentModule,
   ],
   controllers: [],
   providers: [],
