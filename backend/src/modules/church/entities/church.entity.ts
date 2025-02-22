@@ -5,10 +5,10 @@ export class ChurchEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column()
+    @Column({ type: 'varchar', length: 36 })
     name: string;
 
-    @Column()
+    @Column({ type: 'varchar', length: 36 })
     city: string;
 
     @CreateDateColumn({ type: 'timestamp' })

@@ -1,9 +1,9 @@
 import { Repository } from 'typeorm';
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateChurchDto } from './dto/create-church.dto';
-import { UpdateChurchDto } from './dto/update-church.dto';
 import { ChurchEntity } from 'src/modules/church/entities/church.entity';
+import { ReturnChurchByCity } from './interface/get-by-city-church.interface';
 
 @Injectable()
 export class ChurchService {
@@ -17,15 +17,17 @@ export class ChurchService {
     return await this.churchRepository.save(church);
   }
 
-  findAll() {
-    return `This action returns all church`;
+  async findChurchCity(city: string): Promise<ReturnChurchByCity[]> {
+    return await this.churchRepository.find({ where: { city: city } });
   }
 
-  update(id: number, updateChurchDto: UpdateChurchDto) {
-    return `This action updates a #${id} church`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} church`;
+  async remove(id: string) {
+    const church = await this.churchRepository.findOne({ where: { id } });
+    
+    if (!church) {
+      throw new BadRequestException('ID not found');
+    }
+    
+    return await this.churchRepository.remove(church);
   }
 }
