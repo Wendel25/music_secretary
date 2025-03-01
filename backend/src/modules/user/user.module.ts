@@ -1,9 +1,23 @@
 import { Module } from '@nestjs/common';
 import { UserService } from './user.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserController } from './user.controller';
+import { UserEntity } from 'src/modules/user/entities/user.entity';
+import { StatusEntity } from 'src/modules/user/entities/status.entity';
+import { CreateUserService } from './utils/create-user/create-user.service';
+import { MinistriesEntity } from 'src/modules/user/entities/ministries.entity';
+import { ChurchEntity } from '../church/entities/church.entity';
+import { InstrumentEntity } from '../instrument/entities/instrument.entity';
 
 @Module({
+  imports: [TypeOrmModule.forFeature([
+    UserEntity,
+    StatusEntity,
+    ChurchEntity,
+    MinistriesEntity,
+    InstrumentEntity,
+  ])],
   controllers: [UserController],
-  providers: [UserService],
+  providers: [UserService, CreateUserService],
 })
-export class UserModule {}
+export class UserModule { }

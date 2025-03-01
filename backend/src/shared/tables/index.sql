@@ -1,51 +1,17 @@
-CREATE TABLE salt (
-    id CHAR(36) NOT NULL PRIMARY KEY,
-    salt VARCHAR(255) NOT NULL,
-    expired TIMESTAMP,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE password (
-    id CHAR(36) NOT NULL PRIMARY KEY,
-    password_hash VARCHAR(255) NOT NULL,
-    id_salt CHAR(36) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_salt) REFERENCES salt(id) ON DELETE CASCADE
-);
-
-CREATE TABLE users (
-    id CHAR(36) NOT NULL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    id_salt CHAR(36) NOT NULL,
-    id_church CHAR(36) NOT NULL,
-    id_ministry CHAR(36) NOT NULL,  
-    id_instrument CHAR(36) NOT NULL,
-    id_status CHAR(36) NOT NULL,    
-    active BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_salt) REFERENCES salt(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_church) REFERENCES churches(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_ministry) REFERENCES ministry(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_instrument) REFERENCES instrument(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_status) REFERENCES status(id) ON DELETE CASCADE
-);
-
 CREATE TABLE churches (
     id CHAR(36) NOT NULL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     city VARCHAR(100) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-CREATE TABLE ministry (
+CREATE TABLE ministries (
     id CHAR(36) NOT NULL PRIMARY KEY,
     value VARCHAR(100) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE category (
+CREATE TABLE categories (
     id CHAR(36) NOT NULL PRIMARY KEY,
     value VARCHAR(100) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -63,4 +29,28 @@ CREATE TABLE status (
     id CHAR(36) NOT NULL PRIMARY KEY,
     value VARCHAR(100) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE users (
+    id CHAR(36) NOT NULL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    id_church CHAR(36) NOT NULL,
+    id_ministry CHAR(36) NOT NULL,
+    id_instrument CHAR(36) NOT NULL,
+    id_status CHAR(36) NOT NULL,    
+    first_access BOOLEAN DEFAULT FALSE,
+    first_access_at TIMESTAMP NULL, 
+    password_changed BOOLEAN DEFAULT FALSE,
+    password_changed_at TIMESTAMP NULL,
+    last_login_at TIMESTAMP NULL,
+    login_attempts INT DEFAULT 0,
+    block_at TIMESTAMP NULL,
+    active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_church) REFERENCES churches(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_ministry) REFERENCES ministries(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_instrument) REFERENCES instruments(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_status) REFERENCES status(id) ON DELETE CASCADE
 );

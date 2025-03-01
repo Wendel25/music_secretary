@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { CategoryEntity } from './category.entity';
 
-@Entity('instrument')
+@Entity('instruments')
 export class InstrumentEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;

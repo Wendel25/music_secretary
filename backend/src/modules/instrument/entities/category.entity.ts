@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToOne } from 'typeorm';
 import { InstrumentEntity } from './instrument.entity';
 
 @Entity('category')
@@ -12,6 +12,6 @@ export class CategoryEntity {
     @CreateDateColumn({ type: 'timestamp' })
     created_at: Date;
 
-    @OneToMany(() => InstrumentEntity, (instrument) => instrument.id_category)
+    @OneToOne(() => InstrumentEntity, (instrument) => instrument.id_category)
     instruments: InstrumentEntity[];
 }
