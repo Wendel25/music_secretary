@@ -13,7 +13,8 @@ import { InstrumentEntity } from 'src/modules/instrument/entities/instrument.ent
 export class CreateUserService {
     constructor(
         private readonly dataSource: DataSource,
-        @InjectRepository(UserEntity) private userRepository: Repository<UserEntity>,
+        @InjectRepository(UserEntity)
+        private userRepository: Repository<UserEntity>,
     ) { }
 
     public async create(createUserDto: CreateUserDto) {
