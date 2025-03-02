@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { UserEntity } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { ListUsersService } from 'src/modules/user/utils/list-users/list-users.service';
 import { UpdateUserService } from 'src/modules/user/utils/update-user/update-user.service';
 import { DeleteUserService } from 'src/modules/user/utils/delete-user/delete-user.service';
@@ -23,7 +23,7 @@ export class UserService {
     return await this.listUsersService.list(city);
   }
 
-  async update(id: string, updateUserDto: UpdateUserDto) {
+  async update(id: string, updateUserDto: UserEntity) {
     return await this.updateUserService.update(id, updateUserDto);
   }
 

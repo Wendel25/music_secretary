@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, Query } from '@nestjs/common';
-import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiQuery } from '@nestjs/swagger';
+import { UserService } from './user.service';
+import { UserEntity } from './entities/user.entity';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('user')
 export class UserController {
@@ -21,7 +21,7 @@ export class UserController {
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  async update(@Param('id') id: string, @Body() updateUserDto: UserEntity) {
     return await this.userService.update(id, updateUserDto);
   }
 
