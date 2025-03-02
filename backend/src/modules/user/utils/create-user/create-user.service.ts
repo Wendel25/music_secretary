@@ -13,7 +13,6 @@ import { InstrumentEntity } from 'src/modules/instrument/entities/instrument.ent
 export class CreateUserService {
     constructor(
         private readonly dataSource: DataSource,
-
         @InjectRepository(UserEntity) private userRepository: Repository<UserEntity>,
     ) { }
 
@@ -23,7 +22,9 @@ export class CreateUserService {
 
         try {
             const createUser = await this.createDataUser(createUserDto, queryRunner);
-            const user = this.userRepository.create(createUser);
+            const user = this.userRepository.create({
+                ...createUser,
+            });
 
             await queryRunner.manager.save(user);
             await queryRunner.commitTransaction();
@@ -44,7 +45,7 @@ export class CreateUserService {
         }
     }
 
-    private async createDataUser(user: CreateUserDto, queryRunner: QueryRunner) {
+    private async createDataUser(user: CreateUserDto, queryRunner: QueryRunner): Promise<Partial<UserEntity>> {
         await this.findUser(user.email, queryRunner);
 
         const password = await this.criptoPassword();
@@ -52,11 +53,11 @@ export class CreateUserService {
         const [church, ministry, instrument, status] = await Promise.all([
             queryRunner.manager.findOne(ChurchEntity, { where: { id: user.id_church } }),
             queryRunner.manager.findOne(MinistriesEntity, { where: { id: user.id_ministry } }),
-            queryRunner.manager.findOne(InstrumentEntity, { where: { id: user.id_instrument } }),
-            queryRunner.manager.findOne(StatusEntity, { where: { id: user.id_status } }),
+            user.id_instrument ? queryRunner.manager.findOne(InstrumentEntity, { where: { id: user.id_instrument } }) : null,
+            user.id_status ? queryRunner.manager.findOne(StatusEntity, { where: { id: user.id_status } }) : null,
         ]);
 
-        if (!church || !ministry || !instrument || !status) {
+        if (!church || !ministry) {
             throw new BadRequestException('One or more related entities not found');
         }
 
@@ -65,14 +66,14 @@ export class CreateUserService {
             password_hash: password,
             id_church: church,
             id_ministry: ministry,
-            id_instrument: instrument,
-            id_status: status,
+            id_instrument: instrument || undefined,
+            id_status: status || undefined,
         };
     }
 
     private async findUser(email: string, queryRunner: QueryRunner): Promise<UserEntity | null> {
         const response = await queryRunner.manager.findOne(UserEntity, { where: { email } });
-        
+
         if (response) {
             throw new BadRequestException("Email already exists");
         };

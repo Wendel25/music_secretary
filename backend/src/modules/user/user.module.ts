@@ -8,6 +8,7 @@ import { CreateUserService } from './utils/create-user/create-user.service';
 import { MinistriesEntity } from 'src/modules/user/entities/ministries.entity';
 import { ChurchEntity } from '../church/entities/church.entity';
 import { InstrumentEntity } from '../instrument/entities/instrument.entity';
+import { ListUsersService } from './utils/list-users/list-users.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([
@@ -18,6 +19,6 @@ import { InstrumentEntity } from '../instrument/entities/instrument.entity';
     InstrumentEntity,
   ])],
   controllers: [UserController],
-  providers: [UserService, CreateUserService],
+  providers: [UserService, CreateUserService, ListUsersService],
 })
 export class UserModule { }

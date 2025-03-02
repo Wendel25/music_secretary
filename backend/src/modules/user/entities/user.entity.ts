@@ -28,11 +28,11 @@ export class UserEntity {
 
     @OneToOne(() => InstrumentEntity, (instrument) => instrument.id, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'id_instrument' })
-    id_instrument: InstrumentEntity;
+    id_instrument?: InstrumentEntity;
 
     @OneToOne(() => StatusEntity, (status) => status.id, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'id_status' })
-    id_status: StatusEntity;
+    id_status?: StatusEntity;
 
     @Column({ type: 'boolean', default: true })
     first_access: boolean;
