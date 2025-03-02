@@ -23,11 +23,12 @@ export class UserService {
     return await this.listUsersService.list(city);
   }
 
-  async update(id: number, updateUserDto: UpdateUserDto) {
-    return await `This action updates a #${id} user`;
+  async update(id: string, updateUserDto: UpdateUserDto) {
+    return await this.updateUserService.update(id, updateUserDto);
   }
 
   async remove(id: string) {
     return await this.deleteUserService.delete(id);
   }
+
 }
