@@ -34,14 +34,8 @@ export class UserEntity {
     @JoinColumn({ name: 'id_status' })
     id_status?: StatusEntity;
 
-    @Column({ type: 'boolean', default: true })
-    first_access: boolean;
-
     @Column({ type: 'timestamp', nullable: true })
     first_access_at: Date;
-
-    @Column({ type: 'boolean', default: false })
-    password_changed: boolean;
 
     @Column({ type: 'timestamp', nullable: true })
     password_changed_at: Date;
@@ -50,10 +44,10 @@ export class UserEntity {
     last_login_at: Date;
 
     @Column({ type: 'int', default: 0 })
-    login_attempts: number;
+    failed_attempts: number;
 
-    @Column({ type: 'timestamp', nullable: true })
-    block_at: Date;
+    @Column({ type: 'timestamp', nullable: true, default: null })
+    blocked_at: Date | null;
 
     @Column({ type: 'boolean', default: true })
     active: boolean;
