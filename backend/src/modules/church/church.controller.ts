@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param, Delete, Query } from '@nestjs/common';
 import { ChurchService } from './church.service';
-import { CreateChurchDto } from './dto/create-church.dto';
+import { CreateChurchDto } from 'src/common/dtos/church/create-church.dto';
 
 @Controller('church')
 export class ChurchController {

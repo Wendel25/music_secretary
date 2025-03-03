@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { InstrumentEntity } from 'src/modules/instrument/entities/instrument.entity';
+import { InstrumentEntity } from 'src/common/entities/instrument/instrument.entity';
 
 @Injectable()
 export class ListInstrumentService {

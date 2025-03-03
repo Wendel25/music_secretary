@@ -1,9 +1,9 @@
 import { Repository } from 'typeorm';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CategoryEntity } from 'src/modules/instrument/entities/category.entity';
-import { InstrumentEntity } from 'src/modules/instrument/entities/instrument.entity';
-import { CreateInstrumentDTO } from 'src/modules/instrument/dto/create-instrument.dto';
+import { CategoryEntity } from 'src/common/entities/category/category.entity';
+import { InstrumentEntity } from 'src/common/entities/instrument/instrument.entity';
+import { CreateInstrumentDTO } from 'src/common/dtos/instrument/create-instrument.dto';
 
 @Injectable()
 export class CreateInstrumentService {

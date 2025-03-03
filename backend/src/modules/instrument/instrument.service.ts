@@ -1,8 +1,8 @@
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { InstrumentEntity } from './entities/instrument.entity';
+import { InstrumentEntity } from 'src/common/entities/instrument/instrument.entity';
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { CreateInstrumentDTO } from './dto/create-instrument.dto';
+import { CreateInstrumentDTO } from 'src/common/dtos/instrument/create-instrument.dto';
 import { ListCategoryService } from './utils/list-category/list-category.service';
 import { ListInstrumentService } from './utils/list-instrument/list-instrument.service';
 import { CreateInstrumentService } from './utils/create-instrument/create-instrument.service';

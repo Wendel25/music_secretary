@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, Query } from '@nestjs/common';
 import { ApiQuery } from '@nestjs/swagger';
 import { UserService } from './user.service';
-import { UserEntity } from './entities/user.entity';
-import { CreateUserDto } from './dto/create-user.dto';
+import { UserEntity } from 'src/common/entities/user/user.entity';
+import { CreateUserDto } from 'src/common/dtos/user/create-user.dto';
 
 @Controller('user')
 export class UserController {

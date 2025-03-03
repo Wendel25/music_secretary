@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body,  Param, Delete } from '@nestjs/common';
 import { InstrumentService } from './instrument.service';
-import { CreateInstrumentDTO } from './dto/create-instrument.dto';
+import { CreateInstrumentDTO } from 'src/common/dtos/instrument/create-instrument.dto';
 
 @Controller('instrument')
 export class InstrumentController {

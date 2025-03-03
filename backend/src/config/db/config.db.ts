@@ -1,11 +1,11 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { UserEntity } from 'src/modules/user/entities/user.entity';
-import { StatusEntity } from 'src/modules/user/entities/status.entity';
-import { ChurchEntity } from 'src/modules/church/entities/church.entity';
-import { MinistriesEntity } from 'src/modules/user/entities/ministries.entity';
-import { CategoryEntity } from 'src/modules/instrument/entities/category.entity';
+import { UserEntity } from 'src/common/entities/user/user.entity';
+import { StatusEntity } from 'src/common/entities/status/status.entity';
+import { ChurchEntity } from 'src/common/entities/church/church.entity';
+import { MinistriesEntity } from 'src/common/entities/ministries/ministries.entity';
 import { DB_HOST, DB_NAME, DB_PASSWORD, DB_USER } from 'src/config/consts/consts';
-import { InstrumentEntity } from 'src/modules/instrument/entities/instrument.entity';
+import { InstrumentEntity } from 'src/common/entities/instrument/instrument.entity';
+import { CategoryEntity } from 'src/common/entities/category/category.entity';
 
 export const configDB = (): TypeOrmModuleOptions => ({
     type: 'mariadb',

@@ -1,8 +1,8 @@
 import { Repository } from 'typeorm';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateChurchDto } from './dto/create-church.dto';
-import { ChurchEntity } from 'src/modules/church/entities/church.entity';
+import { CreateChurchDto } from 'src/common/dtos/church/create-church.dto';
+import { ChurchEntity } from 'src/common/entities/church/church.entity';
 import { ReturnChurchByCity } from './interface/get-by-city-church.interface';
 
 @Injectable()

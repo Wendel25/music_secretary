@@ -2,12 +2,12 @@ import * as bcrypt from 'bcrypt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, QueryRunner, Repository } from 'typeorm';
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { UserEntity } from 'src/modules/user/entities/user.entity';
-import { CreateUserDto } from 'src/modules/user/dto/create-user.dto';
-import { StatusEntity } from 'src/modules/user/entities/status.entity';
-import { ChurchEntity } from 'src/modules/church/entities/church.entity';
-import { MinistriesEntity } from 'src/modules/user/entities/ministries.entity';
-import { InstrumentEntity } from 'src/modules/instrument/entities/instrument.entity';
+import { UserEntity } from 'src/common/entities/user/user.entity';
+import { CreateUserDto } from 'src/common/dtos/user/create-user.dto';
+import { StatusEntity } from 'src/common/entities/status/status.entity';
+import { ChurchEntity } from 'src/common/entities/church/church.entity';
+import { MinistriesEntity } from 'src/common/entities/ministries/ministries.entity';
+import { InstrumentEntity } from 'src/common/entities/instrument/instrument.entity';
 
 @Injectable()
 export class CreateUserService {

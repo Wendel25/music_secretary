@@ -1,8 +1,8 @@
 import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CategoryEntity } from 'src/modules/instrument/entities/category.entity';
-import { InstrumentEntity } from 'src/modules/instrument/entities/instrument.entity';
+import { CategoryEntity } from 'src/common/entities/category/category.entity';
+import { InstrumentEntity } from 'src/common/entities/instrument/instrument.entity';
 
 @Injectable()
 export class ListCategoryService {
