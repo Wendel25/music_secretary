@@ -62,6 +62,11 @@ export class CreateUserService {
             throw new BadRequestException('One or more related entities not found');
         }
 
+        const inactiveMinistries = ['Músico', 'Organista', 'Músico - Instrutor', 'Organista - Instrutora'];
+        const isInactiveMinistry = inactiveMinistries.includes(ministry.value);
+
+        const activeStatus = isInactiveMinistry ? false : true;
+
         return {
             ...user,
             password_hash: password,
@@ -69,8 +74,10 @@ export class CreateUserService {
             id_ministry: ministry,
             id_instrument: instrument || undefined,
             id_status: status || undefined,
+            active: activeStatus,
         };
     }
+
 
     private async findUser(email: string, queryRunner: QueryRunner): Promise<UserEntity | null> {
         const response = await queryRunner.manager.findOne(UserEntity, { where: { email } });

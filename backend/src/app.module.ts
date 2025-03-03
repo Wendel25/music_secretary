@@ -10,8 +10,9 @@ import { JwtAuthGuard } from 'src/auth/guards/auth.guard';
 import { UserModule } from 'src/modules/user/user.module';
 import { LoginModule } from 'src/modules/login/login.module';
 import { ChurchModule } from 'src/modules/church/church.module';
+import { DasboardModule } from 'src/modules/dashboard/dasboard.module';
 import { InstrumentModule } from 'src/modules/instrument/instrument.module';
-import { DasboardModule } from './modules/dasboard/dasboard.module';
+import { FetchDataByCityModule } from 'src/utils/fetch-data-by-city/fetch-data-by-city.module';
 
 @Module({
   imports: [
@@ -27,8 +28,8 @@ import { DasboardModule } from './modules/dasboard/dasboard.module';
     InstrumentModule,
     LoginModule,
     DasboardModule,
+    FetchDataByCityModule,
   ],
-  controllers: [],
   providers: [
     {
       provide: APP_GUARD,

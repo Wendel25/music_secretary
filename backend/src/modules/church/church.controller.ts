@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Param, Delete, Query } from '@nestjs/common';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 import { ChurchService } from './church.service';
 import { CreateChurchDto } from 'src/common/dtos/church/create-church.dto';
 
@@ -15,7 +15,8 @@ export class ChurchController {
 
   @Get()
   @ApiBearerAuth()
-  async findOne(@Query('city') city: string) {
+  @ApiQuery({ name: 'city', required: false })
+  async findOne(@Query('city') city?: string) {
     return await this.churchService.findChurchCity(city);
   }
 

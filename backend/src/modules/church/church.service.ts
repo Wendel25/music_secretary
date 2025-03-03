@@ -1,9 +1,9 @@
 import { Repository } from 'typeorm';
-import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateChurchDto } from 'src/common/dtos/church/create-church.dto';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { ChurchEntity } from 'src/common/entities/church/church.entity';
-import { ReturnChurchByCity } from './interface/get-by-city-church.interface';
+import { CreateChurchDto } from 'src/common/dtos/church/create-church.dto';
+import { ReturnChurchByCity } from 'src/interfaces/church/get-by-city-church.interface';
 
 @Injectable()
 export class ChurchService {
@@ -17,7 +17,7 @@ export class ChurchService {
     return await this.churchRepository.save(church);
   }
 
-  async findChurchCity(city: string): Promise<ReturnChurchByCity[]> {
+  async findChurchCity(city?: string): Promise<ReturnChurchByCity[]> {
     return await this.churchRepository.find({ where: { city: city } });
   }
 
