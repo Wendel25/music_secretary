@@ -1,7 +1,7 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 
 export function setupAppConfig(app: INestApplication) {
-    app.setGlobalPrefix('api/portal/suppliers');
+    app.setGlobalPrefix('api/');
 
     app.enableCors({
         origin: ['http://localhost:3000'],

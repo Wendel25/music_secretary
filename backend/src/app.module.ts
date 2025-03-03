@@ -1,12 +1,16 @@
 import { Module } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { configDB } from 'src/config/db/config.db';
+
+import { JwtAuthGuard } from 'src/auth/guards/auth.guard';
+
 import { UserModule } from 'src/modules/user/user.module';
+import { LoginModule } from 'src/modules/login/login.module';
 import { ChurchModule } from 'src/modules/church/church.module';
-import { configDB } from './config/db/config.db';
-import { InstrumentModule } from './modules/instrument/instrument.module';
-import { LoginModule } from './modules/login/login.module';
+import { InstrumentModule } from 'src/modules/instrument/instrument.module';
 
 @Module({
   imports: [
@@ -23,6 +27,11 @@ import { LoginModule } from './modules/login/login.module';
     LoginModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    }
+  ],
 })
 export class AppModule {}

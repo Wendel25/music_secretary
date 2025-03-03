@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToOne } from 'typeorm';
 import { InstrumentEntity } from '../instrument/instrument.entity';
 
-@Entity('category')
+@Entity('categories')
 export class CategoryEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
