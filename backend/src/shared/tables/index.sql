@@ -35,6 +35,7 @@ CREATE TABLE users (
     id CHAR(36) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
+    phone VARCHAR(20) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     id_church CHAR(36) NOT NULL,
     id_ministry CHAR(36) NOT NULL,

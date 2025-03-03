@@ -13,6 +13,11 @@ export class CreateUserDto {
     @ApiProperty({ description: 'inform the user email' })
     email: string;
 
+    @IsString()
+    @IsNotEmpty()
+    @ApiProperty({ description: 'inform the user phone' })
+    phone: string;
+
     // @IsString()
     // @IsNotEmpty()
     // @IsStrongPassword({

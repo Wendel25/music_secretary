@@ -18,6 +18,9 @@ export class UserEntity {
     @Column({ type: 'varchar', length: 255 })
     password_hash: string;
 
+    @Column({ type: 'varchar', length: 20 })
+    phone: string;
+
     @OneToOne(() => ChurchEntity, (church) => church.id, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'id_church' })
     id_church: ChurchEntity;

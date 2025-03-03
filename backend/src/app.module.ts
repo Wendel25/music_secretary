@@ -11,6 +11,7 @@ import { UserModule } from 'src/modules/user/user.module';
 import { LoginModule } from 'src/modules/login/login.module';
 import { ChurchModule } from 'src/modules/church/church.module';
 import { InstrumentModule } from 'src/modules/instrument/instrument.module';
+import { DasboardModule } from './modules/dasboard/dasboard.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { InstrumentModule } from 'src/modules/instrument/instrument.module';
     ChurchModule,
     InstrumentModule,
     LoginModule,
+    DasboardModule,
   ],
   controllers: [],
   providers: [

@@ -48,6 +48,7 @@ export class LoginSuccessService {
             id: user.id,
             name: user.name,
             email: user.email,
+            phone: user.phone,
             church: `${user.id_church.name} - ${user.id_church.city}`,
             ministry: user.id_ministry.value,
             instrument: user.id_instrument?.value,
