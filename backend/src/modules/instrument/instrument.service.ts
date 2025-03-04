@@ -1,9 +1,8 @@
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { InstrumentEntity } from 'src/common/entities/instrument/instrument.entity';
 import { BadRequestException, Injectable } from '@nestjs/common';
+import { InstrumentEntity } from 'src/common/entities/instrument/instrument.entity';
 import { CreateInstrumentDTO } from 'src/common/dtos/instrument/create-instrument.dto';
-import { ListCategoryService } from './utils/list-category/list-category.service';
 import { ListInstrumentService } from './utils/list-instrument/list-instrument.service';
 import { CreateInstrumentService } from './utils/create-instrument/create-instrument.service';
 
@@ -15,7 +14,6 @@ export class InstrumentService {
 
     private createInstrumentService: CreateInstrumentService,
     private listInstrumentService: ListInstrumentService,
-    private listCategoryService: ListCategoryService
   ) { }
   
   async create(createInstrumentDto: CreateInstrumentDTO) {
@@ -24,10 +22,6 @@ export class InstrumentService {
 
   async findAll() {
     return await this.listInstrumentService.list();
-  }
-
-  async findCategory() {
-    return await this.listCategoryService.list();
   }
 
   async remove(id: string) {

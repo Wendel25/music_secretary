@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToOne } from 'typeorm';
-import { InstrumentEntity } from '../instrument/instrument.entity';
+import { InstrumentEntity } from 'src/common/entities/instrument/instrument.entity';
 
 @Entity('categories')
 export class CategoryEntity {

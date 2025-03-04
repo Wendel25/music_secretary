@@ -19,12 +19,6 @@ export class InstrumentController {
     return await this.instrumentService.findAll();
   }
 
-  @Get('category')
-  @ApiBearerAuth()
-  async findAllCategory() {
-    return await this.instrumentService.findCategory();
-  }
-
   @Delete(':id')
   @ApiBearerAuth()
   async remove(@Param('id') id: string) {
