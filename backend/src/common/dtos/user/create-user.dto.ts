@@ -18,18 +18,6 @@ export class CreateUserDto {
     @ApiProperty({ description: 'inform the user phone' })
     phone: string;
 
-    // @IsString()
-    // @IsNotEmpty()
-    // @IsStrongPassword({
-    //     minLength: 8,
-    //     minLowercase: 1,
-    //     minUppercase: 1,
-    //     minNumbers: 1,
-    //     minSymbols: 1,
-    // })
-    // @ApiProperty({ description: 'inform the password for access' })
-    // password: string;
-
     @IsString()
     @IsNotEmpty()
     @IsUUID()

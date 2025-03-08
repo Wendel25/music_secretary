@@ -13,6 +13,8 @@ import { ChurchModule } from 'src/modules/church/church.module';
 import { DasboardModule } from 'src/modules/dashboard/dasboard.module';
 import { InstrumentModule } from 'src/modules/instrument/instrument.module';
 import { FetchDataByCityModule } from 'src/utils/fetch-data-by-city/fetch-data-by-city.module';
+import { UpdatePasswordModule } from './modules/update-password/update-password.module';
+import { EncryptPasswordService } from './utils/encrypt-password/encrypt-password.service';
 
 @Module({
   imports: [
@@ -29,12 +31,14 @@ import { FetchDataByCityModule } from 'src/utils/fetch-data-by-city/fetch-data-b
     LoginModule,
     DasboardModule,
     FetchDataByCityModule,
+    UpdatePasswordModule,
   ],
   providers: [
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
-    }
+    },
+    EncryptPasswordService,
   ],
 })
 export class AppModule {}

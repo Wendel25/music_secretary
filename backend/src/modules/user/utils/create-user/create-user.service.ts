@@ -1,4 +1,3 @@
-import * as bcrypt from 'bcrypt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, QueryRunner, Repository } from 'typeorm';
 import { BadRequestException, Injectable } from '@nestjs/common';
@@ -8,6 +7,7 @@ import { StatusEntity } from 'src/common/entities/status/status.entity';
 import { ChurchEntity } from 'src/common/entities/church/church.entity';
 import { MinistriesEntity } from 'src/common/entities/ministries/ministries.entity';
 import { InstrumentEntity } from 'src/common/entities/instrument/instrument.entity';
+import { EncryptPasswordService } from 'src/utils/encrypt-password/encrypt-password.service';
 
 @Injectable()
 export class CreateUserService {
@@ -15,6 +15,7 @@ export class CreateUserService {
         private readonly dataSource: DataSource,
         @InjectRepository(UserEntity)
         private userRepository: Repository<UserEntity>,
+        private encryptPasswordService: EncryptPasswordService
     ) { }
 
     public async create(createUserDto: CreateUserDto) {
@@ -49,7 +50,8 @@ export class CreateUserService {
     private async createDataUser(user: CreateUserDto, queryRunner: QueryRunner): Promise<Partial<UserEntity>> {
         await this.findUser(user.email, queryRunner);
 
-        const password = await this.criptoPassword();
+        const fixedPassword = 'Mudar123@';
+        const password = await this.encryptPasswordService.cripto(fixedPassword);
 
         const [church, ministry, instrument, status] = await Promise.all([
             queryRunner.manager.findOne(ChurchEntity, { where: { id: user.id_church } }),
@@ -87,16 +89,5 @@ export class CreateUserService {
         };
 
         return null;
-    }
-
-    private async criptoPassword(): Promise<string> {
-        const saltRounds = 10;
-        const password = 'Mudar123@';
-
-        try {
-            return await bcrypt.hash(password, saltRounds);
-        } catch (err) {
-            throw new BadRequestException('Error while encrypting password');
-        }
     }
 }

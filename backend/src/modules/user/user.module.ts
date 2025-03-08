@@ -10,6 +10,7 @@ import { InstrumentEntity } from 'src/common/entities/instrument/instrument.enti
 import { CreateUserService } from 'src/modules/user/utils/create-user/create-user.service';
 import { DeleteUserService } from 'src/modules/user/utils/delete-user/delete-user.service';
 import { UpdateUserService } from 'src/modules/user/utils/update-user/update-user.service';
+import { EncryptPasswordService } from 'src/utils/encrypt-password/encrypt-password.service';
 import { FetchDataByCityService } from 'src/utils/fetch-data-by-city/fetch-data-by-city.service';
 
 @Module({
@@ -26,7 +27,8 @@ import { FetchDataByCityService } from 'src/utils/fetch-data-by-city/fetch-data-
     CreateUserService,
     DeleteUserService,
     UpdateUserService,
-    FetchDataByCityService
+    FetchDataByCityService,
+    EncryptPasswordService
   ],
 })
 export class UserModule { }
