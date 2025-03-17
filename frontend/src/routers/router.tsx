@@ -1,10 +1,15 @@
-import { BrowserRouter } from "react-router-dom";
-import PublicRoutes from "@/routers/public-routes";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { PublicRoutes } from "@/routers/public";
+import { PrivateRoutes } from "@/routers/private";
 
 export const AppRoutes: React.FC = () => {
   return (
     <BrowserRouter>
-      <PublicRoutes />
+      <Routes>
+        {PublicRoutes()}
+        {PrivateRoutes()}
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Routes>
     </BrowserRouter>
   );
 };
