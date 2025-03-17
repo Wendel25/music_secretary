@@ -5,7 +5,7 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title>Entrar | Regional Telhas</title>
+        <title>Entrar | CCB</title>
       </Helmet>
 
       <ViewLogin />
