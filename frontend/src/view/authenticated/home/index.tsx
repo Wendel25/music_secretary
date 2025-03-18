@@ -1,5 +1,5 @@
 import SidebarMenu from "@/components/layout/menu";
-import { SidebarProvider } from "@/components/ui/sidebar"; // Importa o provider correto
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 export function HomeView() {
   return (

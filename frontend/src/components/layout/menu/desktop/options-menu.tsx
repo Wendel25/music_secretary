@@ -1,4 +1,6 @@
 import { useMemo } from "react";
+import { menuItems } from "../menu-items";
+import { LogoutUser } from "@/utils/logout";
 import { useLocation } from "react-router-dom";
 import { SidebarItem } from "./sidebar-options-items";
 import { LayoutDashboard, LogOut } from "lucide-react";
@@ -11,8 +13,6 @@ import {
   SidebarMenu,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { menuItems } from "./menu-items";
-import { LogoutUser } from "@/utils/logout";
 
 export function OptionsMenu() {
   const location = useLocation();
