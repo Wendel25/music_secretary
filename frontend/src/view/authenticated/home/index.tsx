@@ -1,8 +1,12 @@
-export function HomeView() {
-    return (
-        <div className="">
+import SidebarMenu from "@/components/layout/menu";
+import { SidebarProvider } from "@/components/ui/sidebar"; // Importa o provider correto
 
-          <h1>Dashboard</h1>
-        </div>
-    )
+export function HomeView() {
+  return (
+    <SidebarProvider>
+      <SidebarMenu titlePage="Dashboard">
+        <h1>Dashboard</h1>
+      </SidebarMenu>
+    </SidebarProvider>
+  );
 }
