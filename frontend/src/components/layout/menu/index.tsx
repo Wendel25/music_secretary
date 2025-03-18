@@ -1,8 +1,8 @@
 import { useState, useCallback } from "react";
-import { OptionsMenu } from "./desktop/options-menu";
 import useDeviceType from "@/hook/use-device-type";
+import { SidebarHeader } from "@/components/layout/menu/sidebar-header";
+import { OptionsMenu } from "@/components/layout/menu/desktop/options-menu";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { SidebarHeader } from "./sidebar-header";
 
 interface SidebarMenuProps {
   titlePage: string;

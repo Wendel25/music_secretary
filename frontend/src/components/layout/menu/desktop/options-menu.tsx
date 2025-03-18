@@ -1,9 +1,9 @@
 import { useMemo } from "react";
-import { menuItems } from "../menu-items";
 import { LogoutUser } from "@/utils/logout";
 import { useLocation } from "react-router-dom";
-import { SidebarItem } from "./sidebar-options-items";
 import { LayoutDashboard, LogOut } from "lucide-react";
+import { menuItems } from "@/components/layout/menu/menu-items";
+import { SidebarItem } from "@/components/layout/menu/desktop/sidebar-options-items";
 import {
   Sidebar,
   SidebarContent,

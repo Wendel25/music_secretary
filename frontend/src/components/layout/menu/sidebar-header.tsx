@@ -1,5 +1,5 @@
 import { AlignJustify } from "lucide-react";
-import { MenuMobile } from "./mobile";
+import { MenuMobile } from "@/components/layout/menu/mobile";
 
 interface TopMenuProps {
     viewType: "desktop" | "mobile" | "tablet";
