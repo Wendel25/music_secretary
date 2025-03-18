@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { LogoutUser } from "@/utils/logout";
 import { useLocation } from "react-router-dom";
-import { LayoutDashboard, LogOut } from "lucide-react";
+import { ChartNoAxesColumn, LogOut } from "lucide-react";
 import { menuItems } from "@/components/layout/menu/menu-items";
 import { SidebarItem } from "@/components/layout/menu/desktop/sidebar-options-items";
 import {
@@ -28,7 +28,7 @@ export function OptionsMenu() {
           <SidebarGroupLabel className="text-[#0097b2] font-semibold">HOME</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarItem icon={LayoutDashboard} label="Dashboard" isActive={activeItem === "home"} />
+              <SidebarItem icon={ChartNoAxesColumn} label="Dashboard" isActive={activeItem === "home"} />
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
