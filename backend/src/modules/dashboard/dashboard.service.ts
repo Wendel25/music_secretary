@@ -4,7 +4,7 @@ import { CalcAmountMusicianService } from 'src/modules/dashboard/utils/calc-amou
 import { CalcTypesInstrumentsService } from 'src/modules/dashboard/utils/calc-types-instruments/calc-types-instruments.service';
 
 @Injectable()
-export class DasboardService {
+export class DashboardService {
   constructor(
     private readonly fetchDataByCityService: FetchDataByCityService,
     private readonly calcAmountMusicianService: CalcAmountMusicianService,

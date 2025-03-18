@@ -9,7 +9,7 @@ interface SidebarItemProps {
 }
 
 export function SidebarItem({ icon, label, isActive, onClick }: SidebarItemProps) {
-  const optionsActive = isActive ? "text-[#0097b2]" : "";
+  const optionsActive = isActive ? "text-color_logo" : "";
   const optionLogout = label === "Sair" ? "text-red-500" : "";
 
   return (

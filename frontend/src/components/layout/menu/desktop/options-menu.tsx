@@ -25,7 +25,7 @@ export function OptionsMenu() {
     <Sidebar collapsible="none" className="border-r">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-[#0097b2] font-semibold">HOME</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-color_logo font-semibold">HOME</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarItem icon={ChartNoAxesColumn} label="Dashboard" isActive={activeItem === "home"} />
@@ -34,7 +34,7 @@ export function OptionsMenu() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel className="text-[#0097b2] font-semibold">GERENCIAMENTO</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-color_logo font-semibold">GERENCIAMENTO</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems

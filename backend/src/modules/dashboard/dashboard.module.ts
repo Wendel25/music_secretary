@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DasboardService } from './dasboard.service';
-import { DasboardController } from './dasboard.controller';
+import { DashboardService } from './dashboard.service';
+import { DasboardController } from './dashboard.controller';
 import { UserEntity } from 'src/common/entities/user/user.entity';
 import { CategoryEntity } from 'src/common/entities/category/category.entity';
 import { InstrumentEntity } from 'src/common/entities/instrument/instrument.entity';
@@ -13,7 +13,7 @@ import { CalcTypesInstrumentsService } from 'src/modules/dashboard/utils/calc-ty
   imports: [TypeOrmModule.forFeature([UserEntity, InstrumentEntity, CategoryEntity])],
   controllers: [DasboardController],
   providers: [
-    DasboardService,
+    DashboardService,
     FetchDataByCityService,
     CalcAmountMusicianService,
     CalcTypesInstrumentsService

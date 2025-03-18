@@ -10,10 +10,10 @@ export class CalcAmountMusicianService {
         };
 
         const statusCounts = {
-            'Ensaio': 0,
-            'Reunião de Jovens': 0,
-            'Culto Oficial': 0,
-            'Oficializado': 0,
+            'ensaio': 0,
+            'reuniao_jovens': 0,
+            'culto_oficial': 0,
+            'oficializado': 0,
         };
 
         const countStatus = (users: UserEntity[]) => {
