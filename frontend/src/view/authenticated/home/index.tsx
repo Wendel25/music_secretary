@@ -1,7 +1,8 @@
-import { LoadingComponent } from "@/components/layout/loading";
 import SidebarMenu from "@/components/layout/menu";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { LoadingComponent } from "@/components/layout/loading";
 import { useDataFromApiDashboard } from "@/view/authenticated/home/use-data-from-api";
+import { HeaderHomeComponent } from "./header";
 
 export function HomeView() {
   const { isPending } = useDataFromApiDashboard();
@@ -13,7 +14,7 @@ export function HomeView() {
       ) : (
         <SidebarProvider>
           <SidebarMenu titlePage="Dashboard">
-            <h1>Dashboard</h1>
+            <HeaderHomeComponent />
           </SidebarMenu>
         </SidebarProvider>
       )}
