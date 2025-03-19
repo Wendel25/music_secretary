@@ -1,10 +1,10 @@
 import { AlignJustify } from "lucide-react";
 import { MenuMobile } from "@/components/layout/menu/mobile";
+import { ShortcutMessages } from "@/components/layout/menu/shortcut-messages";
 
 interface TopMenuProps {
-    viewType: "desktop" | "mobile" | "tablet";
-    toggleSidebar: () => void;
-  
+  viewType: "desktop" | "mobile" | "tablet";
+  toggleSidebar: () => void;
 }
 
 export function SidebarHeader({ viewType, toggleSidebar }: TopMenuProps) {
@@ -23,6 +23,8 @@ export function SidebarHeader({ viewType, toggleSidebar }: TopMenuProps) {
           <MenuMobile />
         )}
       </div>
+
+      {viewType === "desktop" && <ShortcutMessages />}
     </div>
   );
 }

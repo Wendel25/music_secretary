@@ -2,7 +2,7 @@ export interface TokenLogin {
     token: string
 }
 
-export interface TokenDecode {
+export interface TokenDecodeInterface {
     id: string;
     name: string;
     email: string;
