@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { TokenDecode } from "@/utils/token";
+import { useEffect, useState } from "react";
+import { useDataUser } from "@/hook/use-data-user";
+import { FormUpdatePassword } from "@/view/authenticated/home/update-password/form-update";
 import {
   Dialog,
   DialogContent,
@@ -10,22 +11,37 @@ import {
 } from "@/components/ui/dialog";
 
 export function UpdatePassword() {
-  const [open, setOpen] = useState(true);
-  const updatePassword = TokenDecode();
+  const { data } = useDataUser();
+  const [open, setOpen] = useState(false);
 
-  console.log(updatePassword);
+  useEffect(() => {
+    if (data?.password_changed_at) {
+      setOpen(false);
+    } else {
+      setOpen(true);
+    }
+  }, [data]);
+
+  const handleDialogClose = (openStatus: boolean) => {
+    if (data?.password_changed_at) {
+      setOpen(openStatus);
+    } else {
+      setOpen(true);
+    }
+  };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={handleDialogClose}>
       <DialogTrigger />
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogTitle>Bem Vindo!</DialogTitle>
           <DialogDescription>
-            This action cannot be undone. This will permanently delete your account and remove your data from our
-            servers.
+            Para garantir a sua segurança, precisamos que você crie uma nova senha <b>antes</b> de acessar sua conta.
           </DialogDescription>
         </DialogHeader>
+
+        <FormUpdatePassword />
       </DialogContent>
     </Dialog>
   );

@@ -5,7 +5,7 @@ export function setupAppConfig(app: INestApplication) {
 
     app.enableCors({
         origin: ['http://localhost:3000'],
-        methods: 'GET,PUT,POST,DELETE',
+        methods: 'GET,PATCH,POST,DELETE',
         credentials: true,
     });
 

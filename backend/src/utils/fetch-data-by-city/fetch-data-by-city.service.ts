@@ -10,7 +10,7 @@ export class FetchDataByCityService {
         private userRepository: Repository<UserEntity>
     ) { }
 
-    public async data(city?: string) {
+    public async findAll(city?: string) {
         try {
             const queryBuilder = this.userRepository.createQueryBuilder('user')
             .leftJoinAndSelect('user.id_church', 'church')
@@ -27,4 +27,21 @@ export class FetchDataByCityService {
             throw new BadRequestException('An error occurred while fetching the requested data');
         }
     }
+
+    public async findUnique(email: string) {
+        try {
+            const user = await this.userRepository.findOne({
+                where: { email },
+                relations: ['id_church', 'id_ministry', 'id_instrument', 'id_status'],
+            });
+
+            if (!user) throw new BadRequestException('User not found');
+
+            const { password_hash, ...userWithoutPassword } = user;
+            return userWithoutPassword;
+        } catch (error) {
+            throw new BadRequestException('An error occurred while fetching the requested data');
+        }
+    }
+
 }

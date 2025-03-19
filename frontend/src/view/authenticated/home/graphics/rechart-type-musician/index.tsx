@@ -1,7 +1,7 @@
 import { ChartColumnDecreasing } from "lucide-react";
 import { ChartContainer } from "@/components/ui/chart";
 import { Bar, BarChart, XAxis, YAxis } from "recharts";
-import { ResultCalcInterface } from "@/interfaces/api/dashboard";
+import { ResultCalcInterface } from "@/interfaces/dashboard";
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { LegendGraphicsComponent } from "@/view/authenticated/home/graphics/legende-graphics";
 import { FormattedDataForGraphic } from "@/view/authenticated/home/graphics/rechart-type-musician/formatted-data-for-graphic";

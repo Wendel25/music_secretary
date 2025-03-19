@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { DataDashboardReceived } from "@/interfaces/api/dashboard";
+import { DataDashboardReceived } from "@/interfaces/dashboard";
 
 interface DashboardStore {
     data: DataDashboardReceived | undefined;

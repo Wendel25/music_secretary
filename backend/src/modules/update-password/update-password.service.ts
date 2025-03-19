@@ -25,7 +25,6 @@ export class UpdatePasswordService {
 
       return { message: 'Password updated successfully' };
     } catch (error) {
-      console.error(error);
       throw new BadRequestException('Error while updating password');
     }
   }

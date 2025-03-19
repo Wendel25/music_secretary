@@ -22,6 +22,13 @@ export class UserController {
     return await this.userService.findAll(city);
   }
 
+  @Get('find-unique')
+  @ApiBearerAuth()
+  @ApiQuery({ name: 'email' })
+  async findUnique(@Query('email') email: string) {
+    return await this.userService.findUnique(email);
+  }
+
   @Patch(':id')
   @ApiBearerAuth()
   async update(@Param('id') id: string, @Body() updateUserDto: UserEntity) {

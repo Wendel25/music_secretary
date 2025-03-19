@@ -1,4 +1,4 @@
-import { ResultCalcInterface } from "@/interfaces/api/dashboard";
+import { ResultCalcInterface } from "@/interfaces/dashboard";
 
 interface RechartTypeMusicianProps {
     data: ResultCalcInterface | undefined;

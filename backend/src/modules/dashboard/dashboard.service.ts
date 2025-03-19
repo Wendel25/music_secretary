@@ -12,7 +12,7 @@ export class DashboardService {
   ) { }
 
   public async findAllDashboard(city?: string) {
-    const data = await this.fetchDataByCityService.data(city || '');
+    const data = await this.fetchDataByCityService.findAll(city || '');
     const resultCalc = this.calcAmountMusicianService.calc(data);
     const resultCalcTypes = await this.calcTypesInstrumentsService.calcTypes(data);
     return {

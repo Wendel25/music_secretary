@@ -20,7 +20,11 @@ export class UserService {
   }
 
   async findAll(city?: string) {
-    return await this.fetchDataByCityService.data(city || '');
+    return await this.fetchDataByCityService.findAll(city || '');
+  }
+
+  async findUnique(email: string) {
+    return await this.fetchDataByCityService.findUnique(email);
   }
 
   async update(id: string, updateUserDto: UserEntity) {
@@ -30,5 +34,4 @@ export class UserService {
   async remove(id: string) {
     return await this.deleteUserService.delete(id);
   }
-
 }

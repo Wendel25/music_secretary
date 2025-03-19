@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog";
 
 export function ShortcutMessages() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const shortcutsData = [
     { action: "Abrir/Fechar Menu", shortcut: ["Ctrl", "B"] },

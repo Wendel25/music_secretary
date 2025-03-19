@@ -1,6 +1,6 @@
 import { apiGet } from "@/services/api";
 import { validationUser } from "@/utils/validation-user";
-import { DataDashboardReceived } from "@/interfaces/api/dashboard";
+import { DataDashboardReceived } from "@/interfaces/dashboard";
 
 export async function fetchDataDashboard(): Promise<DataDashboardReceived | undefined> {
     const route = validationUser('dashboard', 'city'); 
