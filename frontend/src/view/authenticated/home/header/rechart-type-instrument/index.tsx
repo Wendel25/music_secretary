@@ -3,6 +3,7 @@ import { PieChart, Pie, ResponsiveContainer } from "recharts";
 import { TypesCalcInterface } from "@/interfaces/api/dashboard";
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { LegendGraphicsComponent } from "@/view/authenticated/home/header/legende-graphics";
 
 interface RechartTypeInstrumentProps {
   data: TypesCalcInterface | undefined;
@@ -10,8 +11,14 @@ interface RechartTypeInstrumentProps {
 
 export function RechartTypeInstrument({ data }: RechartTypeInstrumentProps) {
   const colors = ["#0097b2", "#A8E6CF", "#FF6F61"];
-  
-  const chartData = data ? Object.entries(data).map(([key, value], index) => ({ name: key, value: value, fill: colors[index % colors.length] })) : [];
+
+  const chartData = data
+    ? Object.entries(data).map(([key, value], index) => ({
+        name: key,
+        value: value,
+        fill: colors[index % colors.length],
+      }))
+    : [];
 
   return (
     <Card className="w-full">
@@ -23,7 +30,7 @@ export function RechartTypeInstrument({ data }: RechartTypeInstrumentProps) {
           </div>
         </CardDescription>
         <CardContent>
-          <ChartContainer config={{}} className="mx-auto aspect-square min-h-[200px] max-h-[200px]">
+          <ChartContainer config={{}} className="mx-auto aspect-square min-h-[270px] max-h-[270px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <ChartTooltip content={<ChartTooltipContent nameKey="value" hideLabel />} />
@@ -49,14 +56,12 @@ export function RechartTypeInstrument({ data }: RechartTypeInstrumentProps) {
             </ResponsiveContainer>
           </ChartContainer>
 
-          <div className="flex gap-4 mt-5 justify-center">
-            {chartData.map((entry, index) => (
-              <div key={`legend-${index}`} className="flex items-center justify-center truncate">
-                <div className="w-4 h-4 mr-2 rounded-sm" style={{ backgroundColor: colors[index % colors.length] }} />
-                <span className="text-sm truncate w-[50px] sm:w-[90px]">{entry.name}</span>
-              </div>
-            ))}
-          </div>
+          <LegendGraphicsComponent
+            legendData={chartData.map((entry, index) => ({
+              label: entry.name,
+              color: colors[index % colors.length],
+            }))}
+          />
         </CardContent>
       </CardHeader>
     </Card>

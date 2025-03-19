@@ -22,7 +22,7 @@ export function HeaderHomeComponent() {
         <RechartTypeInstrument data={typeInstrument} />
       </div>
 
-      <div className="col-span-1 md:col-span-4 md:row-span-3 md:row-start-3">
+      <div className="col-span-1 md:col-span-4 md:row-span-3 md:row-start-3 flex">
         <RechartTypeMusician data={totalValues} />
       </div>
     </div>
