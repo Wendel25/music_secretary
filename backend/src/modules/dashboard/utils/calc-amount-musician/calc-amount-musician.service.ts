@@ -9,31 +9,43 @@ export class CalcAmountMusicianService {
             organists: ['Organista', 'Organista - Instrutora'],
         };
 
-        const statusCounts = {
+        const statusMapping = {
+            'Ensaio': 'ensaio',
+            'Reunião de Jovens': 'reuniao_jovens',
+            'Culto Oficial': 'culto_oficial',
+            'Oficializado': 'oficializado',
+        };
+
+        const initializeStatusCounts = () => ({
             'ensaio': 0,
             'reuniao_jovens': 0,
             'culto_oficial': 0,
             'oficializado': 0,
-        };
+        });
 
         const countStatus = (users: UserEntity[]) => {
             return users.reduce((counts, user) => {
                 const statusValue = user.id_status?.value;
-                if (statusValue && counts[statusValue] !== undefined) {
-                    counts[statusValue]++;
+                if (statusValue === undefined) {
+                    return counts;
+                }
+                const normalizedStatus = statusMapping[statusValue as keyof typeof statusMapping];
+
+                if (normalizedStatus && counts[normalizedStatus] !== undefined) {
+                    counts[normalizedStatus]++;
                 }
                 return counts;
-            }, { ...statusCounts });
+            }, initializeStatusCounts());
         };
 
         const musicians = {
             total: 0,
-            status: { ...statusCounts },
+            status: initializeStatusCounts(),
         };
 
         const organists = {
             total: 0,
-            status: { ...statusCounts },
+            status: initializeStatusCounts(),
         };
 
         all.forEach(user => {
@@ -48,11 +60,8 @@ export class CalcAmountMusicianService {
             }
         });
 
-        const musiciansWithStatus = all.filter(user => ministryGroups.musicians.includes(user.id_ministry?.value));
-        musicians.status = countStatus(musiciansWithStatus);
-
-        const organistsWithStatus = all.filter(user => ministryGroups.organists.includes(user.id_ministry?.value));
-        organists.status = countStatus(organistsWithStatus);
+        musicians.status = countStatus(all.filter(user => ministryGroups.musicians.includes(user.id_ministry?.value)));
+        organists.status = countStatus(all.filter(user => ministryGroups.organists.includes(user.id_ministry?.value)));
 
         return {
             musicians,

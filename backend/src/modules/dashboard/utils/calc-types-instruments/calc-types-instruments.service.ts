@@ -44,7 +44,7 @@ export class CalcTypesInstrumentsService {
                     }
 
                 } catch (error) {
-                    console.error(`Erro ao buscar instrumento ${instrumentValue}:`, error);
+                    throw new BadRequestException(`Erro ao buscar instrumento ${instrumentValue}: ${error.message}`);
                 }
             }
         }
