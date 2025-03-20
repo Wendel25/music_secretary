@@ -5,8 +5,8 @@ import { RechartTypeMusician } from "./rechart-type-musician";
 
 export function GraphicsHomeComponent() {
   const { data } = useDashboardStore();
-  const totalValues = data?.resultCalc;
-  const typeInstrument = data?.resultCalcTypes;
+  const totalValues = data?.resultData;
+  const typeInstrument = data?.secondResultData;
 
   return (
     <div className="grid grid-cols-1 gap-2 w-full md:grid-cols-6 md:grid-rows-5">

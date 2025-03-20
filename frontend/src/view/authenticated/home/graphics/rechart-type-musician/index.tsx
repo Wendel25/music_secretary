@@ -1,6 +1,6 @@
 import { ChartColumnDecreasing } from "lucide-react";
 import { ChartContainer } from "@/components/ui/chart";
-import { Bar, BarChart, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, XAxis, YAxis, LabelList } from "recharts";
 import { ResultCalcInterface } from "@/interfaces/dashboard";
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { LegendGraphicsComponent } from "@/view/authenticated/home/graphics/legende-graphics";
@@ -32,12 +32,15 @@ export function RechartTypeMusician({ data }: RechartTypeMusicianProps) {
                     tickLine={false}
                     axisLine={false}
                     tickFormatter={(value) => value.toString()}
-                    domain={["dataMin", "dataMax"]}
-                    ticks={Array.from({ length: 4 }, (_, index) => index * 1)}
+                    domain={[0, "dataMax + 2"]}
                   />
                   <XAxis dataKey="category" tickLine={false} tickMargin={10} axisLine={false} />
-                  <Bar dataKey="musicians" fill="#0097b2" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="organists" fill="#A8E6CF" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="musicians" fill="#0097b2" radius={[4, 4, 0, 0]}>
+                    <LabelList dataKey="musicians" position="top" style={{ fontSize: 12 }} />
+                  </Bar>
+                  <Bar dataKey="organists" fill="#A8E6CF" radius={[4, 4, 0, 0]}>
+                    <LabelList dataKey="organists" position="top" style={{ fontSize: 12 }} />
+                  </Bar>
                 </BarChart>
 
                 <div className="flex justify-center">

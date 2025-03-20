@@ -16,9 +16,6 @@ export class FetchDataByCityService {
                 .leftJoinAndSelect('user.id_church', 'church')
                 .leftJoinAndSelect('church.id_city', 'city')
                 .leftJoinAndSelect('user.id_ministry', 'ministry')
-                .leftJoinAndSelect('user.id_instrument', 'instrument')
-                .leftJoinAndSelect('instrument.id_category', 'category')
-                .leftJoinAndSelect('user.id_status', 'status')
                 .select([
                     'user.id', 'user.name', 'user.email', 'user.phone', 'user.first_access_at',
                     'user.password_changed_at', 'user.last_login_at', 'user.failed_attempts',
@@ -26,9 +23,6 @@ export class FetchDataByCityService {
                     'church.id', 'church.name', 'church.created_at',
                     'city.id', 'city.value', 'city.created_at',
                     'ministry.id', 'ministry.value', 'ministry.created_at',
-                    'instrument.id', 'instrument.value', 'instrument.created_at',
-                    'category.id', 'category.value', 'category.created_at',
-                    'status.id', 'status.value', 'status.created_at'
                 ]);
 
             if (city) {
@@ -50,9 +44,6 @@ export class FetchDataByCityService {
                     'id_church',
                     'id_church.id_city',
                     'id_ministry',
-                    'id_instrument',
-                    'id_instrument.id_category',
-                    'id_status'
                 ],
             });
 

@@ -1,9 +1,7 @@
-import { Badge } from "@/components/ui/badge";
 import { usePagination } from "@/hook/use-pagination";
 import { useUserStore } from "@/store/search-user-table";
 import { formatPhoneNumber } from "@/utils/formatting/phone";
 import { HeaderTableUsers } from "@/view/authenticated/home/table-musician/header-table";
-import { getCategoryColor } from "@/view/authenticated/home/table-musician/category-color";
 import { TableFooterComponent } from "@/view/authenticated/home/table-musician/table-footer";
 import { useDataUsersForTable } from "@/view/authenticated/home/table-musician/use-data-table";
 import { ButtonActionTable } from "@/view/authenticated/home/table-musician/button-action-table";
@@ -30,7 +28,7 @@ export function TableMusicianAndOrganist() {
     <Card className="mt-8">
       <CardHeader className="flex flex-col md:flex-row gap-4 w-full justify-between items-center">
         <div className="w-full">
-          <CardTitle>Músicos e Organistas</CardTitle>
+          <CardTitle>Usuários</CardTitle>
         </div>
 
         <div className="w-full md:w-[15%] flex justify-end">
@@ -43,17 +41,14 @@ export function TableMusicianAndOrganist() {
 
         <div className="grid">
           <Table className="border rounded-md">
-            <TableHeader>
+            <TableHeader className="bg-gray-200 rounded-md">
               <TableRow>
                 <TableHead>Nome</TableHead>
                 <TableHead>Email</TableHead>
                 <TableHead>Telefone</TableHead>
                 <TableHead>Igreja</TableHead>
                 <TableHead>Cidade</TableHead>
-                <TableHead>Instrumento</TableHead>
-                <TableHead>Naipes</TableHead>
                 <TableHead>Nível</TableHead>
-                <TableHead>Status</TableHead>
                 <TableHead>Ação</TableHead>
               </TableRow>
             </TableHeader>
@@ -68,14 +63,7 @@ export function TableMusicianAndOrganist() {
                     <TableCell>{formatPhoneNumber(item.phone)}</TableCell>
                     <TableCell>{item.id_church.name}</TableCell>
                     <TableCell>{item.id_church.id_city.value}</TableCell>
-                    <TableCell>{item.id_instrument.value}</TableCell>
-                    <TableCell>
-                      <Badge className={`${getCategoryColor(item.id_instrument.id_category.value)} border`}>
-                        {item.id_instrument.id_category.value}
-                      </Badge>
-                    </TableCell>
                     <TableCell>{ministry}</TableCell>
-                    <TableCell>{item.id_status.value}</TableCell>
                     <TableCell>
                       <ButtonActionTable />
                     </TableCell>

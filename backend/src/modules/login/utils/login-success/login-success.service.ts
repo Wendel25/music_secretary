@@ -24,7 +24,7 @@ export class LoginSuccessService {
             return await this.usersRepository.findOneOrFail(
                 {
                     where: { email },
-                    relations: ['id_church', 'id_ministry', 'id_instrument', 'id_status']
+                    relations: ['id_church', 'id_ministry']
                 });
         } catch (error) {
             throw new NotFoundException(`User not found`);
@@ -52,8 +52,6 @@ export class LoginSuccessService {
             city: user.id_church.id_city,
             church: user.id_church.name,
             ministry: user.id_ministry.value,
-            instrument: user.id_instrument?.value,
-            status: user.id_status?.value,
             last_login_at: user.last_login_at,
             first_access_at: user.first_access_at,
             password_changed_at: user.password_changed_at,

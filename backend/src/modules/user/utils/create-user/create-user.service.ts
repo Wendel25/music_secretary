@@ -53,30 +53,20 @@ export class CreateUserService {
         const fixedPassword = 'Mudar123@';
         const password = await this.encryptPasswordService.cripto(fixedPassword);
 
-        const [church, ministry, instrument, status] = await Promise.all([
+        const [church, ministry] = await Promise.all([
             queryRunner.manager.findOne(ChurchEntity, { where: { id: user.id_church } }),
             queryRunner.manager.findOne(MinistriesEntity, { where: { id: user.id_ministry } }),
-            user.id_instrument ? queryRunner.manager.findOne(InstrumentEntity, { where: { id: user.id_instrument } }) : null,
-            user.id_status ? queryRunner.manager.findOne(StatusEntity, { where: { id: user.id_status } }) : null,
         ]);
 
         if (!church || !ministry) {
             throw new BadRequestException('One or more related entities not found');
         }
 
-        const inactiveMinistries = ['Músico', 'Organista', 'Músico - Instrutor', 'Organista - Instrutora'];
-        const isInactiveMinistry = inactiveMinistries.includes(ministry.value);
-
-        const activeStatus = isInactiveMinistry ? false : true;
-
         return {
             ...user,
             password_hash: password,
             id_church: church,
             id_ministry: ministry,
-            id_instrument: instrument || undefined,
-            id_status: status || undefined,
-            active: activeStatus,
         };
     }
 

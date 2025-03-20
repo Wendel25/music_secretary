@@ -8,7 +8,7 @@ export function validationUser(nameRoute: string, parameter: string) {
 
     let route = '';
 
-    if (ministry === 'adm' || ministry === 'Encarregado - Regional' || ministry === 'Ancião') {
+    if (ministry === 'ADM' || ministry === 'Encarregado - Regional' || ministry === 'Ancião') {
         route = nameRoute;
     } else {
         route = `${nameRoute}?${parameter}=${city}`;

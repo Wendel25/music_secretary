@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { UserEntity } from 'src/common/entities/user/user.entity';
+import { MusicianAndOrganistEntities } from 'src/common/entities/musician-and-organists/musician-and-organist.entity';
 
 @Injectable()
 export class CalcAmountMusicianService {
-    public calc(all: UserEntity[]) {
+    public calc(all: MusicianAndOrganistEntities[]) {
         const ministryGroups = {
             musicians: ['Músico', 'Músico - Instrutor', 'Encarregado - Local', 'Encarregado - Regional'],
             organists: ['Organista', 'Organista - Instrutora'],
@@ -23,7 +23,7 @@ export class CalcAmountMusicianService {
             'oficializado': 0,
         });
 
-        const countStatus = (users: UserEntity[]) => {
+        const countStatus = (users: MusicianAndOrganistEntities[]) => {
             return users.reduce((counts, user) => {
                 const statusValue = user.id_status?.value;
                 if (statusValue === undefined) {

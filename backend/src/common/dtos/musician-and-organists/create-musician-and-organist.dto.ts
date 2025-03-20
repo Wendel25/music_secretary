@@ -1,17 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsEmail, IsUUID, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsUUID, IsOptional } from 'class-validator';
 
-export class CreateUserDto {
+export class CreateMusicianAndOrganistDto {
     @IsString()
     @IsNotEmpty()
     @ApiProperty({ description: 'inform the user name' })
     name: string;
-
-    @IsString()
-    @IsNotEmpty()
-    @IsEmail()
-    @ApiProperty({ description: 'inform the user email' })
-    email: string; ' '
 
     @IsString()
     @IsNotEmpty()
@@ -29,4 +23,16 @@ export class CreateUserDto {
     @IsUUID()
     @ApiProperty({ description: 'inform the id for ministry' })
     id_ministry: string;
+
+    @IsString()
+    @IsOptional()
+    @IsUUID()
+    @ApiProperty({ description: 'inform the id for instrument' })
+    id_instrument: string;
+
+    @IsString()
+    @IsOptional()
+    @IsUUID()
+    @ApiProperty({ description: 'inform the id for status' })
+    id_status: string;
 }

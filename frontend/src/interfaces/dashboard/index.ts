@@ -1,6 +1,6 @@
 export interface DataDashboardReceived {
-    resultCalc: ResultCalcInterface;
-    resultCalcTypes: TypesCalcInterface;
+    resultData: ResultCalcInterface;
+    secondResultData: TypesCalcInterface;
 }
 
 export interface TypesCalcInterface {
