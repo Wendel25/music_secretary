@@ -11,9 +11,9 @@ export interface DataUserInterface {
     active: boolean;
     created_at: string;
     id_church: ChurchUserInterface;
-    id_ministry: InformationsUserInterface | null;
-    id_instrument: InstrumentUserInterface | null;
-    id_status: InformationsUserInterface | null;
+    id_ministry: InformationsUserInterface;
+    id_instrument: InstrumentUserInterface;
+    id_status: InformationsUserInterface;
 }
 
 export interface ChurchUserInterface {

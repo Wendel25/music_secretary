@@ -35,7 +35,7 @@ export default function SidebarMenu({ children, titlePage }: SidebarMenuProps) {
           <Card className="w-full">
             <CardContent>
               <CardHeader className="-mb-7">
-                <CardTitle className="text-2xl">{titlePage}</CardTitle>
+                <CardTitle className="text-2xl -ml-6">{titlePage}</CardTitle>
               </CardHeader>
               {children}
             </CardContent>
