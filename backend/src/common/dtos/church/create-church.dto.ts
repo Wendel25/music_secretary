@@ -14,5 +14,5 @@ export class CreateChurchDto {
     @ApiProperty({
         description: 'Enter the location and status',
     })
-    city: string;
+    id_city: string;
 }

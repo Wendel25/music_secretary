@@ -49,7 +49,7 @@ export class LoginSuccessService {
             name: user.name,
             email: user.email,
             phone: user.phone,
-            city: user.id_church.city,
+            city: user.id_church.id_city,
             church: user.id_church.name,
             ministry: user.id_ministry.value,
             instrument: user.id_instrument?.value,

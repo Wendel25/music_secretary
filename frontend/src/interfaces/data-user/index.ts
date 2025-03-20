@@ -12,15 +12,19 @@ export interface DataUserInterface {
     created_at: string;
     id_church: ChurchUserInterface;
     id_ministry: InformationsUserInterface | null;
-    id_instrument: InformationsUserInterface | null;
+    id_instrument: InstrumentUserInterface | null;
     id_status: InformationsUserInterface | null;
 }
 
 export interface ChurchUserInterface {
     id: string;
     name: string;
-    city: string;
+    id_city: InformationsUserInterface;
     created_at: string;
+}
+
+export interface InstrumentUserInterface extends InformationsUserInterface {
+    id_category: InformationsUserInterface;
 }
 
 export interface InformationsUserInterface {

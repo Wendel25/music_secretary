@@ -34,7 +34,7 @@ export default function SidebarMenu({ children, titlePage }: SidebarMenuProps) {
         <div className="flex-1 p-5 transition-all duration-300">
           <Card className="w-full">
             <CardContent>
-              <CardHeader>
+              <CardHeader className="-mb-7">
                 <CardTitle className="text-2xl">{titlePage}</CardTitle>
               </CardHeader>
               {children}

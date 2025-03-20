@@ -15,9 +15,9 @@ export class ChurchController {
 
   @Get()
   @ApiBearerAuth()
-  @ApiQuery({ name: 'city', required: false })
-  async findOne(@Query('city') city?: string) {
-    return await this.churchService.findChurchCity(city);
+  @ApiQuery({ name: 'id_city', required: false })
+  async findOne(@Query('id_city') id_city?: string) {
+    return await this.churchService.findChurchCity(id_city);
   }
 
   @Delete(':id')
