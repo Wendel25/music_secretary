@@ -24,7 +24,7 @@ export class LoginSuccessService {
             return await this.usersRepository.findOneOrFail(
                 {
                     where: { email },
-                    relations: ['id_church', 'id_ministry']
+                    relations: ['id_church', 'id_church.id_city', 'id_ministry']
                 });
         } catch (error) {
             throw new NotFoundException(`User not found`);
@@ -44,13 +44,17 @@ export class LoginSuccessService {
     }
 
     private async generateJWTToken(user: UserEntity) {
+        console.log(user);
+
         const payload = {
             id: user.id,
             name: user.name,
             email: user.email,
             phone: user.phone,
-            city: user.id_church.id_city,
-            church: user.id_church.name,
+            church: {
+                city: user.id_church.id_city,
+                name: user.id_church.name,
+            },
             ministry: user.id_ministry.value,
             last_login_at: user.last_login_at,
             first_access_at: user.first_access_at,

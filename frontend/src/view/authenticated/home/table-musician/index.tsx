@@ -1,6 +1,7 @@
 import { usePagination } from "@/hook/use-pagination";
 import { useUserStore } from "@/store/search-user-table";
 import { formatPhoneNumber } from "@/utils/formatting/phone";
+import { useHasPermission } from "@/hook/use-has-permission";
 import { HeaderTableUsers } from "@/view/authenticated/home/table-musician/header-table";
 import { TableFooterComponent } from "@/view/authenticated/home/table-musician/table-footer";
 import { useDataUsersForTable } from "@/view/authenticated/home/table-musician/use-data-table";
@@ -10,8 +11,9 @@ import { NewRegisterTableUser } from "@/view/authenticated/home/table-musician/h
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function TableMusicianAndOrganist() {
-  const { data } = useDataUsersForTable();
+  const isAdmin = useHasPermission();
   const { searchQuery } = useUserStore();
+  const { data } = useDataUsersForTable();
 
   const filteredData =
     data?.filter(
@@ -49,7 +51,7 @@ export function TableMusicianAndOrganist() {
                 <TableHead>Igreja</TableHead>
                 <TableHead>Cidade</TableHead>
                 <TableHead>Nível</TableHead>
-                <TableHead>Ação</TableHead>
+                {isAdmin && <TableHead>Ação</TableHead>}
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -64,9 +66,11 @@ export function TableMusicianAndOrganist() {
                     <TableCell>{item.id_church.name}</TableCell>
                     <TableCell>{item.id_church.id_city.value}</TableCell>
                     <TableCell>{ministry}</TableCell>
-                    <TableCell>
-                      <ButtonActionTable />
-                    </TableCell>
+                    {isAdmin && (
+                      <TableCell>
+                        <ButtonActionTable />
+                      </TableCell>
+                    )}
                   </TableRow>
                 );
               })}

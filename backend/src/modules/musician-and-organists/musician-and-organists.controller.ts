@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { MusicianAndOrganistsService } from './musician-and-organists.service';
 import { CreateMusicianAndOrganistDto } from 'src/common/dtos/musician-and-organists/create-musician-and-organist.dto';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
 
 @Controller('musician-and-organists')
 @ApiTags('Musician and Rrganists')
@@ -16,14 +16,23 @@ export class MusicianAndOrganistsController {
 
   @Get()
   @ApiBearerAuth()
-  async findAll() {
-    return await this.musicianAndOrganistsService.findAll();
+  @ApiQuery({ name: 'id_city', required: false })
+  async findAll(@Query('id_city') id_city?: string) {
+    return await this.musicianAndOrganistsService.findAll(id_city);
   }
 
-  @Get(':id')
+  @Get('musician')
   @ApiBearerAuth()
-  async findOne(@Param('id') id: string) {
-    return await this.musicianAndOrganistsService.findOne(+id);
+  @ApiQuery({ name: 'id_city', required: false })
+  async findAllMusician(@Query('id_city') id_city?: string) {
+    return await this.musicianAndOrganistsService.findAllMusician(id_city);
+  }
+
+  @Get('organists')
+  @ApiBearerAuth()
+  @ApiQuery({ name: 'id_city', required: false })
+  async findAllOrganists(@Query('id_city') id_city?: string) {
+    return await this.musicianAndOrganistsService.findAllOrganists(id_city);
   }
 
   @Delete(':id')

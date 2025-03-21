@@ -21,12 +21,31 @@ export class MusicianAndOrganistsService {
     });
   }
 
-  async findAll() {
-    return await `This action returns all musicianAndOrganists`;
+  async findAll(id_city?: string) {
+    return await this.musicianRepository.find({
+      relations: ['id_church', 'id_church.id_city', 'id_ministry', 'id_instrument', 'id_instrument.id_category', 'id_status'],
+      where: id_city ? { id_church: { id_city: { id: id_city } } } : {},
+    });
   }
 
-  async findOne(id: number) {
-    return await  `This action returns a #${id} musicianAndOrganist`;
+  async findAllMusician(id_city?: string) {
+    const listUser = await this.findAll(id_city);
+
+    const filteredList = listUser.filter(user =>
+      ['Músico', 'Encarregado - Local', 'Encarregado - Regional', 'Músico - Instrutor'].includes(user.id_ministry.value)
+    );
+
+    return filteredList;
+  }
+
+  async findAllOrganists(id_city?: string) {
+    const listUser = await this.findAll(id_city);
+
+    const filteredList = listUser.filter(user =>
+      ['Organista', 'Organista - Instrutora'].includes(user.id_ministry.value)
+    );
+
+    return filteredList;
   }
 
   async remove(id: number) {

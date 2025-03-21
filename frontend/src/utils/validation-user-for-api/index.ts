@@ -3,7 +3,7 @@ import { TokenDecode } from "@/utils/token";
 export function validationUser(nameRoute: string, parameter: string) {
     const dataToken = TokenDecode();
 
-    const city = dataToken?.city;
+    const city = dataToken?.church.city.value;
     const ministry = dataToken?.ministry;
 
     let route = '';

@@ -28,7 +28,12 @@ export function OptionsMenu() {
           <SidebarGroupLabel className="text-color_logo font-semibold">HOME</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarItem icon={ChartNoAxesColumn} label="Dashboard" isActive={activeItem === "home"} />
+              <SidebarItem
+                icon={ChartNoAxesColumn}
+                label="Dashboard"
+                isActive={activeItem === "home"}
+                route="/dashboard"
+              />
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -41,7 +46,7 @@ export function OptionsMenu() {
                 .filter(({ label }) => label !== "Dashboard")
                 .filter(({ label }) => label !== "Sair")
                 .map(({ label, icon, route }) => (
-                  <SidebarItem key={route} icon={icon} label={label} isActive={activeItem === route} />
+                  <SidebarItem key={route} icon={icon} label={label} isActive={activeItem === route} route={route} />
                 ))}
 
               <SidebarItem icon={LogOut} label="Sair" isActive={activeItem === "logout"} onClick={LogoutUser} />
