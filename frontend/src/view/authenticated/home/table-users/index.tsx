@@ -2,10 +2,10 @@ import { usePagination } from "@/hook/use-pagination";
 import { useUserStore } from "@/store/search-user-table";
 import { formatPhoneNumber } from "@/utils/formatting/phone";
 import { useHasPermission } from "@/hook/use-has-permission";
-import { HeaderTableUsers } from "@/view/authenticated/home/table-users/header-table";
 import { TableFooterComponent } from "@/components/layout/table-footer";
+import { ButtonsForActionTable } from "@/components/layout/buttons-for-action-table";
+import { HeaderTableUsers } from "@/view/authenticated/home/table-users/header-table";
 import { useDataUsersForTable } from "@/view/authenticated/home/table-users/use-data-table";
-import { ButtonActionTable } from "@/view/authenticated/home/table-users/button-action-table";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { NewRegisterTableUser } from "@/view/authenticated/home/table-users/header-table/new-register";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,12 +13,16 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 export function TableMusicianAndOrganist() {
   const isAdmin = useHasPermission();
   const { searchQuery } = useUserStore();
-  const { data } = useDataUsersForTable();
+  const { data, refresh } = useDataUsersForTable();
 
-  const filteredData = data?.filter((user) =>
-    user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    user.email.toLowerCase().includes(searchQuery.toLowerCase())
-  ).sort((a, b) => a.name.localeCompare(b.name)) || [];
+  const filteredData =
+    data
+      ?.filter(
+        (user) =>
+          user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          user.email.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+      .sort((a, b) => a.name.localeCompare(b.name)) || [];
 
   const { currentPage, totalPages, paginatedData, nextPage, prevPage, goToPage, itemsPerPage } = usePagination({
     data: filteredData,
@@ -66,7 +70,12 @@ export function TableMusicianAndOrganist() {
                     <TableCell>{ministry}</TableCell>
                     {isAdmin && (
                       <TableCell>
-                        <ButtonActionTable />
+                        <ButtonsForActionTable
+                          id={item.id}
+                          routerDeleted={`user/${item.id}`}
+                          onUpdateDataTable={() => refresh()}
+                          children={<p>Aqui vai o componente de formulario para atualizar registross</p>}
+                        />
                       </TableCell>
                     )}
                   </TableRow>

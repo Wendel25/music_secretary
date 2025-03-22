@@ -52,7 +52,7 @@ export class MusicianAndOrganistsService {
     return filteredList;
   }
 
-  async remove(id: number) {
-    return await `This action removes a #${id} musicianAndOrganist`;
+  async remove(id: string) {
+    return await this.musicianRepository.delete(id);
   }
 }

@@ -33,12 +33,13 @@ export default function SidebarMenu({ children, titlePage, componentButton }: Si
         )}
 
         <div className="flex-1 p-5 transition-all duration-300">
-          <Card className="w-full">
+          <Card className="w-full h-[calc(95vh-80px)] overflow-auto">
             <CardContent>
               <CardHeader className="flex flex-col justify-between items-center -mb-7 md:flex-row">
                 <CardTitle className="text-2xl -ml-6">{titlePage}</CardTitle>
                 {componentButton}
               </CardHeader>
+
               {children}
             </CardContent>
           </Card>

@@ -1,18 +1,18 @@
 import { Award } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { getCategoryColor } from "./category-color";
-import { useRegistersStore } from "@/store/registers";
 import { usePagination } from "@/hook/use-pagination";
 import { useUserStore } from "@/store/search-user-table";
 import { formatPhoneNumber } from "@/utils/formatting/phone";
-import { ButtonActionTableMusicians } from "./button-action";
 import { useHasPermission } from "@/hook/use-has-permission";
+import { UseDataForTableMusician } from "./use-data-for-table";
 import { TableFooterComponent } from "@/components/layout/table-footer";
+import { ButtonsForActionTable } from "@/components/layout/buttons-for-action-table";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export function TableMusician() {
   const isAdmin = useHasPermission();
-  const { data } = useRegistersStore();
+  const { data, mutate } = UseDataForTableMusician();
 
   const { searchQuery } = useUserStore();
   const filteredData =
@@ -60,7 +60,12 @@ export function TableMusician() {
               </TableCell>
               {isAdmin && (
                 <TableCell>
-                  <ButtonActionTableMusicians />
+                  <ButtonsForActionTable
+                    id={item.id}
+                    routerDeleted={`musician-and-organists/${item.id}`}
+                    onUpdateDataTable={() => mutate()}
+                    children={<p>Aqui vai o componente de formulario para atualizar musicos</p>}
+                  />
                 </TableCell>
               )}
             </TableRow>

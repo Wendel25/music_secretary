@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface TableFooterProps<T> {
   currentPage: number;
@@ -20,16 +20,13 @@ export function TableFooterComponent<T>({
   prevPage,
 }: TableFooterProps<T>) {
   return (
-    <div className="flex flex-col md:flex-row gap-3 items-center justify-between w-full">
+    <div className="flex flex-col md:flex-row gap-3 items-center justify-between w-full mt-5">
       <div className="text-sm text-muted-foreground">
         Mostrando {(currentPage - 1) * itemsPerPage + 1}-{Math.min(currentPage * itemsPerPage, sortedData.length)} de{" "}
         {sortedData.length} resultados
       </div>
 
       <div className="flex items-center space-x-2">
-        <Button variant="outline" size="icon" onClick={prevPage} disabled={currentPage === 1}>
-          <ChevronsLeft className="h-4 w-4" />
-        </Button>
         <Button variant="outline" size="icon" onClick={prevPage} disabled={currentPage === 1}>
           <ChevronLeft className="h-4 w-4" />
         </Button>
@@ -38,9 +35,6 @@ export function TableFooterComponent<T>({
         </span>
         <Button variant="outline" size="icon" onClick={nextPage} disabled={currentPage === totalPages}>
           <ChevronRight className="h-4 w-4" />
-        </Button>
-        <Button variant="outline" size="icon" onClick={nextPage} disabled={currentPage === totalPages}>
-          <ChevronsRight className="h-4 w-4" />
         </Button>
       </div>
     </div>

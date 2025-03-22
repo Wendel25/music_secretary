@@ -18,5 +18,5 @@ export function UseDataForTableMusician() {
     if (!data) mutate();
   }, [data]);
 
-  return { isPending, mutate };
+  return { data, isPending, mutate };
 }

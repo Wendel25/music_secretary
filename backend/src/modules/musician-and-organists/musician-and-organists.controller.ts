@@ -38,6 +38,6 @@ export class MusicianAndOrganistsController {
   @Delete(':id')
   @ApiBearerAuth()
   async remove(@Param('id') id: string) {
-    return await this.musicianAndOrganistsService.remove(+id);
+    return await this.musicianAndOrganistsService.remove(id);
   }
 }
