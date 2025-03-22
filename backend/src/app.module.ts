@@ -16,6 +16,8 @@ import { FetchDataByCityModule } from 'src/utils/fetch-data-by-city/fetch-data-b
 import { UpdatePasswordModule } from './modules/update-password/update-password.module';
 import { EncryptPasswordService } from './utils/encrypt-password/encrypt-password.service';
 import { MusicianAndOrganistsModule } from './modules/musician-and-organists/musician-and-organists.module';
+import { MinistryModule } from './modules/ministry/ministry.module';
+import { StatusModule } from './modules/status/status.module';
 
 @Module({
   imports: [
@@ -34,6 +36,8 @@ import { MusicianAndOrganistsModule } from './modules/musician-and-organists/mus
     FetchDataByCityModule,
     UpdatePasswordModule,
     MusicianAndOrganistsModule,
+    MinistryModule,
+    StatusModule,
   ],
   providers: [
     {

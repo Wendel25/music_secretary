@@ -44,8 +44,6 @@ export class LoginSuccessService {
     }
 
     private async generateJWTToken(user: UserEntity) {
-        console.log(user);
-
         const payload = {
             id: user.id,
             name: user.name,

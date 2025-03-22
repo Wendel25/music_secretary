@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm';
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MusicianAndOrganistEntities } from 'src/common/entities/musician-and-organists/musician-and-organist.entity';
 import { CreateMusicianAndOrganistDto } from 'src/common/dtos/musician-and-organists/create-musician-and-organist.dto';
@@ -12,13 +12,17 @@ export class MusicianAndOrganistsService {
   ) { }
   
   async create(data: CreateMusicianAndOrganistDto) {
-    return await this.musicianRepository.save({
-      ...data,
-      id_church: { id: data.id_church },
-      id_ministry: { id: data.id_ministry },
-      id_instrument: { id: data.id_instrument },
-      id_status: { id: data.id_status },
-    });
+    try {
+      return await this.musicianRepository.save({
+        ...data,
+        id_church: { id: data.id_church },
+        id_ministry: { id: data.id_ministry },
+        id_instrument: { id: data.id_instrument },
+        id_status: { id: data.id_status },
+      });
+    } catch (error) {
+      throw new BadRequestException('Falha ao salvar o músico ou organista.');
+    }
   }
 
   async findAll(id_city?: string) {

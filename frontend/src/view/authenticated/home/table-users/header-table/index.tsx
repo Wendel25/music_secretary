@@ -1,4 +1,4 @@
-import { SearchUserTable } from "@/view/authenticated/home/table-musician/header-table/input-search";
+import { SearchUserTable } from "@/view/authenticated/home/table-users/header-table/input-search";
 
 export function HeaderTableUsers() {
   return (

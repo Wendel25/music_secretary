@@ -18,6 +18,7 @@ export function OptionsMenu() {
   const location = useLocation();
 
   const activeItem = useMemo(() => {
+    if (location.pathname === "/home") return "home";
     return menuItems.find((item) => location.pathname.includes(item.route))?.route || "";
   }, [location]);
 
@@ -28,12 +29,7 @@ export function OptionsMenu() {
           <SidebarGroupLabel className="text-color_logo font-semibold">HOME</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarItem
-                icon={ChartNoAxesColumn}
-                label="Dashboard"
-                isActive={activeItem === "home"}
-                route="/dashboard"
-              />
+              <SidebarItem icon={ChartNoAxesColumn} label="Dashboard" isActive={activeItem === "home"} route="home" />
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -43,7 +39,6 @@ export function OptionsMenu() {
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems
-                .filter(({ label }) => label !== "Dashboard")
                 .filter(({ label }) => label !== "Sair")
                 .map(({ label, icon, route }) => (
                   <SidebarItem key={route} icon={icon} label={label} isActive={activeItem === route} route={route} />

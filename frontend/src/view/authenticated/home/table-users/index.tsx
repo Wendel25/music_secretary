@@ -2,12 +2,12 @@ import { usePagination } from "@/hook/use-pagination";
 import { useUserStore } from "@/store/search-user-table";
 import { formatPhoneNumber } from "@/utils/formatting/phone";
 import { useHasPermission } from "@/hook/use-has-permission";
-import { HeaderTableUsers } from "@/view/authenticated/home/table-musician/header-table";
-import { TableFooterComponent } from "@/view/authenticated/home/table-musician/table-footer";
-import { useDataUsersForTable } from "@/view/authenticated/home/table-musician/use-data-table";
-import { ButtonActionTable } from "@/view/authenticated/home/table-musician/button-action-table";
+import { HeaderTableUsers } from "@/view/authenticated/home/table-users/header-table";
+import { TableFooterComponent } from "@/components/layout/table-footer";
+import { useDataUsersForTable } from "@/view/authenticated/home/table-users/use-data-table";
+import { ButtonActionTable } from "@/view/authenticated/home/table-users/button-action-table";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { NewRegisterTableUser } from "@/view/authenticated/home/table-musician/header-table/new-register";
+import { NewRegisterTableUser } from "@/view/authenticated/home/table-users/header-table/new-register";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function TableMusicianAndOrganist() {
@@ -15,12 +15,10 @@ export function TableMusicianAndOrganist() {
   const { searchQuery } = useUserStore();
   const { data } = useDataUsersForTable();
 
-  const filteredData =
-    data?.filter(
-      (user) =>
-        user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        user.email.toLowerCase().includes(searchQuery.toLowerCase())
-    ) || [];
+  const filteredData = data?.filter((user) =>
+    user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    user.email.toLowerCase().includes(searchQuery.toLowerCase())
+  ).sort((a, b) => a.name.localeCompare(b.name)) || [];
 
   const { currentPage, totalPages, paginatedData, nextPage, prevPage, goToPage, itemsPerPage } = usePagination({
     data: filteredData,

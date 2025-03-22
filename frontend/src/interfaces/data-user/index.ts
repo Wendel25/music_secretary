@@ -3,17 +3,15 @@ export interface DataUserInterface {
     name: string;
     email: string;
     phone: string;
-    first_access_at: string | null;
-    password_changed_at: string | null;
-    last_login_at: string | null;
+    first_access_at: Date | null,
+    password_changed_at: Date | null;
+    last_login_at: Date | null;
+    blocked_at: Date | null;
     failed_attempts: number;
-    blocked_at: string | null;
     active: boolean;
     created_at: string;
     id_church: ChurchUserInterface;
     id_ministry: InformationsUserInterface;
-    id_instrument: InstrumentUserInterface;
-    id_status: InformationsUserInterface;
 }
 
 export interface ChurchUserInterface {

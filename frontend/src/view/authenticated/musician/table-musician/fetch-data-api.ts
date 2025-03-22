@@ -1,9 +1,9 @@
 import { apiGet } from "@/services/api";
+import { RegistersInterface } from "@/interfaces/registers";
 import { validationUser } from "@/utils/validation-user-for-api";
-import { DataUserInterface } from "@/interfaces/data-user";
 
-export async function fetchDataTable(): Promise<DataUserInterface[] | undefined> {
-    const route = validationUser('user', 'city'); 
+export async function fetchDataTableMusician(): Promise<RegistersInterface[] | undefined> {
+    const route = validationUser('musician-and-organists/musician'); 
 
     try {
         return await apiGet(route);

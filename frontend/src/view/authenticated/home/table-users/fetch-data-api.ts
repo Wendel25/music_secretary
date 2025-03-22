@@ -3,7 +3,7 @@ import { validationUser } from "@/utils/validation-user-for-api";
 import { DataUserInterface } from "@/interfaces/data-user";
 
 export async function fetchDataTable(): Promise<DataUserInterface[] | undefined> {
-    const route = validationUser('user', 'city'); 
+    const route = validationUser('user'); 
 
     try {
         return await apiGet(route);

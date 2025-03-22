@@ -3,7 +3,7 @@ import { TokenDecode } from "@/utils/token";
 import { useToast } from "@/hook/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { useListUsersStore } from "@/store/list-users";
-import { fetchDataTable } from "@/view/authenticated/home/table-musician/fetch-data-api";
+import { fetchDataTable } from "@/view/authenticated/home/table-users/fetch-data-api";
 
 export function useDataUsersForTable() {
   const dataUser = TokenDecode();

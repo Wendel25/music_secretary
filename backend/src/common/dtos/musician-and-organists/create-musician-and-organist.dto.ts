@@ -8,9 +8,9 @@ export class CreateMusicianAndOrganistDto {
     name: string;
 
     @IsString()
-    @IsNotEmpty()
+    @IsOptional()
     @ApiProperty({ description: 'inform the user phone' })
-    phone: string;
+    phone?: string;
 
     @IsString()
     @IsNotEmpty()

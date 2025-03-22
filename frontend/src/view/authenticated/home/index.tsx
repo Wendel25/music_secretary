@@ -3,7 +3,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { LoadingComponent } from "@/components/layout/loading";
 import { GraphicsHomeComponent } from "@/view/authenticated/home/graphics";
 import { UpdatePassword } from "@/view/authenticated/home/update-password";
-import { TableMusicianAndOrganist } from "@/view/authenticated/home/table-musician";
+import { TableMusicianAndOrganist } from "@/view/authenticated/home/table-users";
 import { useDataFromApiDashboard } from "@/view/authenticated/home/use-data-from-api";
 
 export function HomeView() {

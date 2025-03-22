@@ -1,6 +1,6 @@
 import { TokenDecode } from "@/utils/token";
 
-export function validationUser(nameRoute: string, parameter: string) {
+export function validationUser(nameRoute: string) {
     const dataToken = TokenDecode();
 
     const city = dataToken?.church.city.value;
@@ -11,7 +11,7 @@ export function validationUser(nameRoute: string, parameter: string) {
     if (ministry === 'ADM' || ministry === 'Encarregado - Regional' || ministry === 'Ancião') {
         route = nameRoute;
     } else {
-        route = `${nameRoute}?${parameter}=${city}`;
+        route = `${nameRoute}?city=${city}`;
     }
 
     return route;

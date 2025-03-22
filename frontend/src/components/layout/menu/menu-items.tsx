@@ -1,7 +1,6 @@
-import { CalendarClock, LayoutDashboard, LogOut } from "lucide-react";
+import { CalendarClock, LogOut } from "lucide-react";
 
 export const menuItems = [
-  { label: "Dashboard", icon: LayoutDashboard, route: "/home" },
   { label: "Músicos", icon: "/musico.png", route: "/musicians" },
   { label: "Organistas", icon: "/organista.png", route: "/organists" },
   { label: "Ensaios", icon: CalendarClock, route: "/essays" },

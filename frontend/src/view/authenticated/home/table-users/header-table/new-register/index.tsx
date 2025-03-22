@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FormRegisterUser } from "./form-register";
@@ -10,16 +11,25 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useDataUsersForTable } from "@/view/authenticated/home/table-users/use-data-table";
 
 export function NewRegisterTableUser() {
+  const { refresh } = useDataUsersForTable();
+  const [open, setOpen] = useState(false);
   const isAdmin = useHasPermission();
+
+  useEffect(() => {
+    if (!open) {
+      refresh();
+    }
+  }, [open, refresh]);
 
   return (
     <>
       {isAdmin && (
         <div className="flex w-full">
-          <Dialog>
-            <DialogTrigger asChild>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild onClick={() => setOpen(true)}>
               <Button className="w-full bg-emerald-500 hover:bg-emerald-600">
                 <Plus /> Novo Usuário
               </Button>
@@ -33,7 +43,7 @@ export function NewRegisterTableUser() {
                 </DialogDescription>
               </DialogHeader>
 
-              <FormRegisterUser />
+              <FormRegisterUser closed={() => setOpen(false)} />
             </DialogContent>
           </Dialog>
         </div>

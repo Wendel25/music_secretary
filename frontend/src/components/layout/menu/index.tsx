@@ -8,9 +8,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 interface SidebarMenuProps {
   titlePage: string;
   children: React.ReactNode;
+  componentButton?: React.ReactNode;
 }
 
-export default function SidebarMenu({ children, titlePage }: SidebarMenuProps) {
+export default function SidebarMenu({ children, titlePage, componentButton }: SidebarMenuProps) {
   const [isOpen, setIsOpen] = useState(true);
   const viewType = useDeviceType();
 
@@ -34,8 +35,9 @@ export default function SidebarMenu({ children, titlePage }: SidebarMenuProps) {
         <div className="flex-1 p-5 transition-all duration-300">
           <Card className="w-full">
             <CardContent>
-              <CardHeader className="-mb-7">
+              <CardHeader className="flex flex-col justify-between items-center -mb-7 md:flex-row">
                 <CardTitle className="text-2xl -ml-6">{titlePage}</CardTitle>
+                {componentButton}
               </CardHeader>
               {children}
             </CardContent>
