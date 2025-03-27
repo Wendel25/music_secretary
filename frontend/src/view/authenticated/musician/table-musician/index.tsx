@@ -5,14 +5,14 @@ import { usePagination } from "@/hook/use-pagination";
 import { useUserStore } from "@/store/search-user-table";
 import { formatPhoneNumber } from "@/utils/formatting/phone";
 import { useHasPermission } from "@/hook/use-has-permission";
-import { UseDataForTableMusician } from "./use-data-for-table";
 import { TableFooterComponent } from "@/components/layout/table-footer";
 import { ButtonsForActionTable } from "@/components/layout/buttons-for-action-table";
+import { getDataMusicianAPI } from "@/view/authenticated/musician/get-data-api-musician";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export function TableMusician() {
   const isAdmin = useHasPermission();
-  const { data, mutate } = UseDataForTableMusician();
+  const { data, mutate } = getDataMusicianAPI();
 
   const { searchQuery } = useUserStore();
   const filteredData =
@@ -63,7 +63,7 @@ export function TableMusician() {
                   <ButtonsForActionTable
                     id={item.id}
                     routerDeleted={`musician-and-organists/${item.id}`}
-                    onUpdateDataTable={() => mutate()}
+                    onUpdateDataTable={() => mutate("musician")}
                     children={<p>Aqui vai o componente de formulario para atualizar musicos</p>}
                   />
                 </TableCell>

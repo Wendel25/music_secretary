@@ -4,6 +4,7 @@ import { ProtectedRoute } from "@/middleware";
 import { HomeView } from "@/view/authenticated/home";
 import MusicianPage from "@/pages/authenticated/musician";
 import OrganistPage from "@/pages/authenticated/organist";
+import EssaysPage from "@/pages/authenticated/essays";
 
 export const PrivateRoutes = () => {
   return (
@@ -29,6 +30,14 @@ export const PrivateRoutes = () => {
         element={
           <ProtectedRoute>
             <OrganistPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/essays"
+        element={
+          <ProtectedRoute>
+            <EssaysPage />
           </ProtectedRoute>
         }
       />

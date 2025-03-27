@@ -17,7 +17,7 @@ export function SidebarItem({ icon, label, isActive, onClick, route }: SidebarIt
   return (
     <SidebarMenuItem>
       <SidebarMenuButton className={optionsActive}>
-        <Link to={route || "#"} onClick={onClick} className={`flex items-center w-full ${optionsActive}`}>
+        <Link onClick={onClick} to={route || "#"} className={`flex items-center w-full h-[25px] ${optionsActive}`}>
           {typeof icon === "string" ? (
             <img src={icon} alt={label} className={`mr-2 h-5 w-5 ${optionsActive} ${optionLogout}`} />
           ) : (

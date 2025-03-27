@@ -1,22 +1,17 @@
-import { useEffect } from "react";
 import { useToast } from "@/hook/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { useRegistersStore } from "@/store/registers";
-import { fetchDataTableMusician } from "@/view/authenticated/musician/table-musician/fetch-data-api";
+import { fetchDataTable } from "@/utils/get-data-api/fetch-data-api";
 
-export function UseDataForTableMusician() {
+export function getDataFromAPI() {
   const { showError } = useToast();
   const { data, setData } = useRegistersStore();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: fetchDataTableMusician,
+    mutationFn: (route: string) => fetchDataTable(route),
     onSuccess: (data) => setData(data),
     onError: (error) => showError(error.message || "Ocorreu um erro ao buscar informações"),
   });
-
-  useEffect(() => {
-    if (!data) mutate();
-  }, [data]);
 
   return { data, isPending, mutate };
 }

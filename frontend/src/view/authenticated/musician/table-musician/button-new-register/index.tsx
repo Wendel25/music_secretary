@@ -1,26 +1,32 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FormNewMusician } from "./form-musician";
 import { useHasPermission } from "@/hook/use-has-permission";
+import { getDataMusicianAPI } from "@/view/authenticated/musician/get-data-api-musician";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,  
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { UseDataForTableMusician } from "@/view/authenticated/musician/table-musician/use-data-for-table";
 
 export function NewRegisterMusician() {
   const [open, setOpen] = useState(false);
   const isAdmin = useHasPermission();
-  const { mutate } = UseDataForTableMusician();
+  const { mutate } = getDataMusicianAPI();
+  const isInitialRender = useRef(true);
 
   useEffect(() => {
+    if (isInitialRender.current) {
+      isInitialRender.current = false;
+      return;
+    }
+
     if (!open) {
-      mutate();
+      mutate("musician");
     }
   }, [open, mutate]);
 
