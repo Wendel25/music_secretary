@@ -1,9 +1,10 @@
+import { formatPhoneNumber } from "@/utils/formatting/phone";
+import { useRegisterUsersForm } from "./use-register-users-form";
 import { FormField } from "@/components/layout/combo-form-field";
 import { SelectChurches } from "@/components/layout/selects/church";
 import { SelectMinistry } from "@/components/layout/selects/ministry";
 import { ButtonLoadingComponent } from "@/components/layout/button-loading";
-import { RegisterFormsProps, useRegisterUsersForm } from "./use-register-users-form";
-import { formatPhoneNumber } from "@/utils/formatting/phone";
+import { RegisterFormsProps } from "@/components/layout/register-new-musician/use-register-form";
 
 export function FormRegisterUser({ closed }: RegisterFormsProps) {
   const { register, handleSubmit, errors, isPending, setValue, onSubmit } = useRegisterUsersForm({

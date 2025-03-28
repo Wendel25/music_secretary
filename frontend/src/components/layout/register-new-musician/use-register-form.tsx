@@ -1,9 +1,9 @@
 import { useToast } from "@/hook/use-toast";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
-import { fetchDataRegister } from "./fetch-data-api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterSchema, RegisterSchemaType } from "@/schema/registers";
+import { fetchDataRegister } from "@/components/layout/register-new-musician/fetch-data-api";
 
 export interface RegisterFormsProps {
   closed: () => void;

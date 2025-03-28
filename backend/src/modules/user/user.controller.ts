@@ -1,7 +1,6 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UsePipes, ValidationPipe, Query } from '@nestjs/common';
 import { UserService } from './user.service';
 import { ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
-import { UserEntity } from 'src/common/entities/user/user.entity';
 import { CreateUserDto } from 'src/common/dtos/user/create-user.dto';
 
 @Controller('user')
@@ -27,12 +26,6 @@ export class UserController {
   @ApiQuery({ name: 'email' })
   async findUnique(@Query('email') email: string) {
     return await this.userService.findUnique(email);
-  }
-
-  @Patch(':id')
-  @ApiBearerAuth()
-  async update(@Param('id') id: string, @Body() updateUserDto: UserEntity) {
-    return await this.userService.update(id, updateUserDto);
   }
 
   @Delete(':id')

@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { MusicianView } from "@/view/authenticated/musician";
-import { getDataMusicianAPI } from "@/view/authenticated/musician/get-data-api-musician";
+import { getDataFromAPI } from "@/utils/get-data-api/get-data-from-api";
 
 export default function MusicianPage() {
-  const { mutate } = getDataMusicianAPI();
+  const { mutate } = getDataFromAPI();
 
   useEffect(() => {
     mutate("musician");

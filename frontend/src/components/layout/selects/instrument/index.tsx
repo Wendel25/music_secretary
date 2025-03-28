@@ -3,7 +3,7 @@ import { SelectOptions } from "@/components/layout/selects/select-options";
 import { RegisterDataInterface as InstrumentInterface } from "@/interfaces/registers";
 
 interface SelectInstrumentProps {
-  option: string;
+  option: "organist" | "musician";
   onSelectedOption: (id: string) => void;
 }
 

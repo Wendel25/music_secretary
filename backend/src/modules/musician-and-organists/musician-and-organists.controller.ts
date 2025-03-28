@@ -4,7 +4,7 @@ import { MusicianAndOrganistsService } from './musician-and-organists.service';
 import { CreateMusicianAndOrganistDto } from 'src/common/dtos/musician-and-organists/create-musician-and-organist.dto';
 
 @Controller('musician-and-organists')
-@ApiTags('Musician and Rrganists')
+  @ApiTags('Musician and Organists')
 export class MusicianAndOrganistsController {
   constructor(private readonly musicianAndOrganistsService: MusicianAndOrganistsService) {}
 

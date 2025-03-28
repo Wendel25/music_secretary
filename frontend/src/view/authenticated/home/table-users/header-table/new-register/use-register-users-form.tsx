@@ -4,10 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { fetchDataRegisterUser } from "./fetch-data-api";
 import { RegisterUsersSchema, RegisterUsersSchemaType } from "@/schema/users";
-
-export interface RegisterFormsProps {
-  closed: () => void;
-}
+import { RegisterFormsProps } from "@/components/layout/register-new-musician/use-register-form";
 
 export function useRegisterUsersForm({ closed }: RegisterFormsProps) {
   const { showSuccess, showError } = useToast();

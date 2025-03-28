@@ -18,6 +18,7 @@ import { EncryptPasswordService } from './utils/encrypt-password/encrypt-passwor
 import { MusicianAndOrganistsModule } from './modules/musician-and-organists/musician-and-organists.module';
 import { MinistryModule } from './modules/ministry/ministry.module';
 import { StatusModule } from './modules/status/status.module';
+import { EssaysModule } from './modules/essays/essays.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { StatusModule } from './modules/status/status.module';
     MusicianAndOrganistsModule,
     MinistryModule,
     StatusModule,
+    EssaysModule,
   ],
   providers: [
     {

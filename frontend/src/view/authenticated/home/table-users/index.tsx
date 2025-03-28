@@ -1,9 +1,8 @@
 import { usePagination } from "@/hook/use-pagination";
 import { useUserStore } from "@/store/search-user-table";
 import { formatPhoneNumber } from "@/utils/formatting/phone";
-import { useHasPermission } from "@/hook/use-has-permission";
 import { TableFooterComponent } from "@/components/layout/table-footer";
-import { ButtonsForActionTable } from "@/components/layout/buttons-for-action-table";
+import { ButtonDeleteWithModal } from "@/components/layout/modal-deleted";
 import { HeaderTableUsers } from "@/view/authenticated/home/table-users/header-table";
 import { useDataUsersForTable } from "@/view/authenticated/home/table-users/use-data-table";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -11,7 +10,6 @@ import { NewRegisterTableUser } from "@/view/authenticated/home/table-users/head
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function TableMusicianAndOrganist() {
-  const isAdmin = useHasPermission();
   const { searchQuery } = useUserStore();
   const { data, refresh } = useDataUsersForTable();
 
@@ -53,7 +51,7 @@ export function TableMusicianAndOrganist() {
                 <TableHead>Igreja</TableHead>
                 <TableHead>Cidade</TableHead>
                 <TableHead>Nível</TableHead>
-                {isAdmin && <TableHead>Ação</TableHead>}
+                <TableHead>Ação</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -68,16 +66,9 @@ export function TableMusicianAndOrganist() {
                     <TableCell>{item.id_church.name}</TableCell>
                     <TableCell>{item.id_church.id_city.value}</TableCell>
                     <TableCell>{ministry}</TableCell>
-                    {isAdmin && (
-                      <TableCell>
-                        <ButtonsForActionTable
-                          id={item.id}
-                          routerDeleted={`user/${item.id}`}
-                          onUpdateDataTable={() => refresh()}
-                          children={<p>Aqui vai o componente de formulario para atualizar registross</p>}
-                        />
-                      </TableCell>
-                    )}
+                    <TableCell>
+                      <ButtonDeleteWithModal url={`user/${item.id}`} closed={() => refresh()} />
+                    </TableCell>
                   </TableRow>
                 );
               })}

@@ -3,11 +3,17 @@ import { FormField } from "@/components/layout/combo-form-field";
 import { SelectStatus } from "@/components/layout/selects/status";
 import { SelectChurches } from "@/components/layout/selects/church";
 import { SelectMinistry } from "@/components/layout/selects/ministry";
-import { RegisterFormsProps, useRegisterForm } from "./use-register-form";
 import { SelectInstrument } from "@/components/layout/selects/instrument";
 import { ButtonLoadingComponent } from "@/components/layout/button-loading";
+import { useRegisterForm } from "@/components/layout/register-new-musician/use-register-form";
 
-export function FormNewMusician({ closed }: RegisterFormsProps) {
+export interface RegisterFormsFieldsProps {
+  closed: () => void;
+  ministry: "all-users" | "all-musicians" | "all-organists";
+  instrument: "organist" | "musician";
+}
+
+export function FormNewMusician({ closed, ministry, instrument }: RegisterFormsFieldsProps) {
   const { register, handleSubmit, errors, isPending, setValue, onSubmit } = useRegisterForm({
     closed: closed,
   });
@@ -45,12 +51,12 @@ export function FormNewMusician({ closed }: RegisterFormsProps) {
         </div>
 
         <div className="grid gap-2">
-          <SelectMinistry options='all-musicians' onSelectedOption={(id) => handleOptionSelect(id, "ministry")} />
+          <SelectMinistry options={ministry} onSelectedOption={(id) => handleOptionSelect(id, "ministry")} />
           {errors.id_ministry && <span className="text-red-500 text-sm">{errors.id_ministry?.message}</span>}
         </div>
 
         <div className="grid gap-2">
-          <SelectInstrument option='musician' onSelectedOption={(id) => handleOptionSelect(id, "instrument")} />
+          <SelectInstrument option={instrument} onSelectedOption={(id) => handleOptionSelect(id, "instrument")} />
           {errors.id_instrument && <span className="text-red-500 text-sm">{errors.id_instrument?.message}</span>}
         </div>
 

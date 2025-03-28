@@ -4,15 +4,13 @@ import { getCategoryColor } from "./category-color";
 import { usePagination } from "@/hook/use-pagination";
 import { useUserStore } from "@/store/search-user-table";
 import { formatPhoneNumber } from "@/utils/formatting/phone";
-import { useHasPermission } from "@/hook/use-has-permission";
 import { TableFooterComponent } from "@/components/layout/table-footer";
+import { getDataFromAPI } from "@/utils/get-data-api/get-data-from-api";
 import { ButtonsForActionTable } from "@/components/layout/buttons-for-action-table";
-import { getDataMusicianAPI } from "@/view/authenticated/musician/get-data-api-musician";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export function TableMusician() {
-  const isAdmin = useHasPermission();
-  const { data, mutate } = getDataMusicianAPI();
+  const { data, mutate } = getDataFromAPI();
 
   const { searchQuery } = useUserStore();
   const filteredData =
@@ -36,7 +34,7 @@ export function TableMusician() {
             <TableHead>Instrumento</TableHead>
             <TableHead>Naipe</TableHead>
             <TableHead>Nível</TableHead>
-            {isAdmin && <TableHead>Ação</TableHead>}
+            <TableHead>Ação</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -58,16 +56,14 @@ export function TableMusician() {
                   <span> {item.id_ministry.value}</span>
                 </div>
               </TableCell>
-              {isAdmin && (
-                <TableCell>
-                  <ButtonsForActionTable
-                    id={item.id}
-                    routerDeleted={`musician-and-organists/${item.id}`}
-                    onUpdateDataTable={() => mutate("musician")}
-                    children={<p>Aqui vai o componente de formulario para atualizar musicos</p>}
-                  />
-                </TableCell>
-              )}
+              <TableCell>
+                <ButtonsForActionTable
+                  id={item.id}
+                  routerDeleted={`musician-and-organists/${item.id}`}
+                  onUpdateDataTable={() => mutate("musician")}
+                  children={<p>Aqui vai o componente de formulario para atualizar musicos</p>}
+                />
+              </TableCell>
             </TableRow>
           ))}
 
