@@ -3,7 +3,7 @@ import { PieChart, Pie } from "recharts";
 import { TypesCalcInterface } from "@/interfaces/dashboard";
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { LegendGraphicsComponent } from "@/view/authenticated/home/graphics/legende-graphics";
+import { LegendGraphicsComponent } from "@/view/authenticated/home/graphics/legend-graphics";
 
 interface RechartTypeInstrumentProps {
   data: TypesCalcInterface | undefined;

@@ -3,30 +3,31 @@ import { TokenDecode } from "@/utils/token";
 import { useToast } from "@/hook/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { useDataUserStore } from "@/store/data-user";
-import { updatePassword } from "@/hook/use-data-user/fetch-data-user-api";
+import { DataUserInterface } from "@/interfaces/data-user";
+import { fetchDataApiGet } from "@/utils/fetch-data-api-get";
 
 export function useDataUser() {
   const dataUser = TokenDecode();
   const { showError } = useToast();
   const { setData, data } = useDataUserStore();
 
-  const { mutate, isPending } = useMutation({
-    mutationFn: updatePassword,
-    onSuccess: (data) =>  setData(data),
+  const router = `user/find-unique?email=${dataUser?.email}`;
+
+  const { mutate } = useMutation({
+    mutationFn: (route: string) => fetchDataApiGet<DataUserInterface>(route),
+    onSuccess: (data) => setData(data),
     onError: () => showError("Ocorreu um erro ao buscar usuário"),
   });
 
   const refresh = () => {
     if (dataUser?.email) {
-      mutate(dataUser.email);
+      mutate(router);
     }
   };
 
   useEffect(() => {
-    if (!data && !isPending && dataUser?.email) {
-      mutate(dataUser.email);
-    }
-  }, [data, isPending, mutate, dataUser?.email]);
+    if (!data) mutate(router);
+  }, []);
 
   return { data, refresh };
 }

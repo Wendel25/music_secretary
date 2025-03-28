@@ -3,7 +3,7 @@ import { ChartContainer } from "@/components/ui/chart";
 import { Bar, BarChart, XAxis, YAxis, LabelList } from "recharts";
 import { ResultCalcInterface } from "@/interfaces/dashboard";
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
-import { LegendGraphicsComponent } from "@/view/authenticated/home/graphics/legende-graphics";
+import { LegendGraphicsComponent } from "@/view/authenticated/home/graphics/legend-graphics";
 import { FormattedDataForGraphic } from "@/view/authenticated/home/graphics/rechart-type-musician/formatted-data-for-graphic";
 
 interface RechartTypeMusicianProps {
