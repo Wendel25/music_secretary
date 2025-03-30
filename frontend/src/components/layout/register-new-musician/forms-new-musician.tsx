@@ -1,6 +1,7 @@
 import { formatPhoneNumber } from "@/utils/formatting/phone";
 import { FormField } from "@/components/layout/combo-form-field";
 import { SelectStatus } from "@/components/layout/selects/status";
+import { MinistriesType, UseForType } from "@/interfaces/data-user";
 import { SelectChurches } from "@/components/layout/selects/church";
 import { SelectMinistry } from "@/components/layout/selects/ministry";
 import { SelectInstrument } from "@/components/layout/selects/instrument";
@@ -9,13 +10,14 @@ import { useRegisterForm } from "@/components/layout/register-new-musician/use-r
 
 export interface RegisterFormsFieldsProps {
   closed: () => void;
-  ministry: "all-users" | "all-musicians" | "all-organists";
-  instrument: "organist" | "musician";
+  ministry: MinistriesType;
+  useFor: UseForType;
 }
 
-export function FormNewMusician({ closed, ministry, instrument }: RegisterFormsFieldsProps) {
+export function FormNewMusician({ closed, ministry, useFor }: RegisterFormsFieldsProps) {
   const { register, handleSubmit, errors, isPending, setValue, onSubmit } = useRegisterForm({
     closed: closed,
+    route: useFor,
   });
 
   const handleOptionSelect = (id: string, field: string) => {
@@ -56,7 +58,7 @@ export function FormNewMusician({ closed, ministry, instrument }: RegisterFormsF
         </div>
 
         <div className="grid gap-2">
-          <SelectInstrument option={instrument} onSelectedOption={(id) => handleOptionSelect(id, "instrument")} />
+          <SelectInstrument option={useFor} onSelectedOption={(id) => handleOptionSelect(id, "instrument")} />
           {errors.id_instrument && <span className="text-red-500 text-sm">{errors.id_instrument?.message}</span>}
         </div>
 

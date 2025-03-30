@@ -10,7 +10,8 @@ import { ButtonsForActionTable } from "@/components/layout/buttons-for-action-ta
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export function TableMusician() {
-  const { data, mutate } = getDataFromAPI();
+  const { getData, mutate } = getDataFromAPI();
+  const data = getData("musician");
 
   const { searchQuery } = useUserStore();
   const filteredData =

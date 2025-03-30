@@ -1,6 +1,5 @@
 import { Award } from "lucide-react";
 import { usePagination } from "@/hook/use-pagination";
-import { useRegistersStore } from "@/store/registers";
 import { useUserStore } from "@/store/search-user-table";
 import { formatPhoneNumber } from "@/utils/formatting/phone";
 import { TableFooterComponent } from "@/components/layout/table-footer";
@@ -9,8 +8,8 @@ import { ButtonsForActionTable } from "@/components/layout/buttons-for-action-ta
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export function TableOrganist() {
-  const { data } = useRegistersStore();
-  const { mutate } = getDataFromAPI();
+  const { getData, mutate } = getDataFromAPI();
+  const data = getData("organists");
 
   const { searchQuery } = useUserStore();
   const filteredData =

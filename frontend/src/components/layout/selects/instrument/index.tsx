@@ -1,9 +1,10 @@
+import { UseForType } from "@/interfaces/data-user";
 import { instrumentFilters } from "./options-filter";
 import { SelectOptions } from "@/components/layout/selects/select-options";
 import { RegisterDataInterface as InstrumentInterface } from "@/interfaces/registers";
 
 interface SelectInstrumentProps {
-  option: "organist" | "musician";
+  option: UseForType;
   onSelectedOption: (id: string) => void;
 }
 

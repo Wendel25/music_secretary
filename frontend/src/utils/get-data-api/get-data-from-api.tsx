@@ -5,13 +5,25 @@ import { fetchDataTable } from "@/utils/get-data-api/fetch-data-api";
 
 export function getDataFromAPI() {
   const { showError } = useToast();
-  const { data, setData } = useRegistersStore();
+  const { musicianData, organistData, setMusicianData, setOrganistData } = useRegistersStore();
 
   const { mutate, isPending } = useMutation({
     mutationFn: (route: string) => fetchDataTable(route),
-    onSuccess: (data) => setData(data),
+    onSuccess: (data, variables) => {
+      if (variables === "musician") {
+        setMusicianData(data);
+      } else if (variables === "organists") {
+        setOrganistData(data);
+      }
+    },
     onError: (error) => showError(error.message || "Ocorreu um erro ao buscar informações"),
   });
 
-  return { data, isPending, mutate };
+  const getData = (route: string) => {
+    if (route === "musician") return musicianData;
+    if (route === "organists") return organistData;
+    return [];
+  };
+
+  return { mutate, isPending, getData };
 }

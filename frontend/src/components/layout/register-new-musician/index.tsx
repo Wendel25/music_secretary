@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getDataFromAPI } from "@/utils/get-data-api/get-data-from-api";
 import {
   Dialog,
   DialogContent,
@@ -12,32 +11,13 @@ import {
 } from "@/components/ui/dialog";
 
 interface FormNewMusicianProps {
-  route: string;
   textButton: string;
   textDialogTitle: string;
   Forms: React.ComponentType<{ closed: () => void }>;
 }
 
-export function ModalRegisterMusician({ route, textButton, textDialogTitle, Forms }: FormNewMusicianProps) {
+export function ModalRegisterMusician({ textButton, textDialogTitle, Forms }: FormNewMusicianProps) {
   const [open, setOpen] = useState(false);
-
-  const { mutate } = getDataFromAPI();
-  const isInitialRender = useRef(true);
-
-  useEffect(() => {
-    if (isInitialRender.current) {
-      isInitialRender.current = false;
-      return;
-    }
-
-    if (!open && route === "musician") {
-      mutate("musician");
-    }
-
-    if (!open && route === "organists") {
-      mutate("organists");
-    }
-  }, [open, mutate]);
 
   return (
     <div className="flex w-full md:w-auto">

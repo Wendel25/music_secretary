@@ -36,7 +36,7 @@ export default function SidebarMenu({ children, titlePage, componentButton }: Si
           <Card className="w-full h-[calc(95vh-80px)] overflow-auto">
             <CardContent>
               <CardHeader className="flex flex-col justify-between items-center -mb-7 md:flex-row">
-                <CardTitle className="text-2xl -ml-6">{titlePage}</CardTitle>
+                <CardTitle className="text-2xl -ml-6 w-full flex justify-start">{titlePage}</CardTitle>
                 {componentButton}
               </CardHeader>
 

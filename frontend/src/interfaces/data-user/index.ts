@@ -30,3 +30,6 @@ export interface InformationsUserInterface {
     value: string;
     created_at: string;
 }
+
+export type MinistriesType = "all-users" | "all-musicians" | "all-organists";
+export type UseForType = "all-users" | "all-musicians";

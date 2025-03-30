@@ -1,4 +1,5 @@
 import SidebarMenu from "@/components/layout/menu";
+import { UseForType } from "@/interfaces/data-user";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { LoadingComponent } from "@/components/layout/loading";
 import { SearchUserTable } from "@/utils/input-search-for-table";
@@ -16,10 +17,11 @@ export function OrganistView() {
         titlePage="Organistas"
         componentButton={
           <ModalRegisterMusician
-            route="organists"
             textButton="Adicionar Organista"
             textDialogTitle="Nova organista"
-            Forms={(props) => <FormNewMusician {...props} ministry="all-organists" instrument="organist" />}
+            Forms={(props) => (
+              <FormNewMusician {...props} ministry="all-organists" useFor={"organists" as UseForType} />
+            )}
           />
         }
       >
