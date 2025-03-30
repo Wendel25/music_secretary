@@ -3,15 +3,16 @@ import { useUserStore } from "@/store/search-user-table";
 import { formatPhoneNumber } from "@/utils/formatting/phone";
 import { TableFooterComponent } from "@/components/layout/table-footer";
 import { ButtonDeleteWithModal } from "@/components/layout/modal-deleted";
+import { useDataUsers } from "@/view/authenticated/home/table-users/use-data-table";
 import { HeaderTableUsers } from "@/view/authenticated/home/table-users/header-table";
-import { useDataUsersForTable } from "@/view/authenticated/home/table-users/use-data-table";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { NewRegisterTableUser } from "@/view/authenticated/home/table-users/header-table/new-register";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useEffect } from "react";
 
 export function TableMusicianAndOrganist() {
   const { searchQuery } = useUserStore();
-  const { data, refresh } = useDataUsersForTable();
+  const { data, refresh } = useDataUsers();
 
   const filteredData =
     data
@@ -25,6 +26,10 @@ export function TableMusicianAndOrganist() {
   const { currentPage, totalPages, paginatedData, nextPage, prevPage, goToPage, itemsPerPage } = usePagination({
     data: filteredData,
   });
+
+  useEffect(() => {
+    refresh();
+  }, []);
 
   return (
     <Card className="mt-8">

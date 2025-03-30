@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FormRegisterUser } from "./form-register";
@@ -11,18 +11,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useDataUsersForTable } from "@/view/authenticated/home/table-users/use-data-table";
 
 export function NewRegisterTableUser() {
-  const { refresh } = useDataUsersForTable();
   const [open, setOpen] = useState(false);
   const isAdmin = useHasPermission();
-
-  useEffect(() => {
-    if (!open) {
-      refresh();
-    }
-  }, [open, refresh]);
 
   return (
     <>

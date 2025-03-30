@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { TokenDecode } from "@/utils/token";
 import { useToast } from "@/hook/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { useListUsersStore } from "@/store/list-users";
@@ -7,12 +5,11 @@ import { DataUserInterface } from "@/interfaces/data-user";
 import { fetchDataApiGet } from "@/utils/fetch-data-api-get";
 import { validationUser } from "@/utils/validation-user-for-api";
 
-export function useDataUsersForTable() {
-  const dataUser = TokenDecode();
+export function useDataUsers() {
   const { showError } = useToast();
   const { setData, data } = useListUsersStore();
 
-  const route = validationUser("user");
+  const routeAPI = validationUser("user");
 
   const { mutate, isPending } = useMutation({
     mutationFn: (route: string) => fetchDataApiGet<DataUserInterface[]>(route),
@@ -21,16 +18,10 @@ export function useDataUsersForTable() {
   });
 
   const refresh = () => {
-    if (!data && !isPending) {
-      mutate(route);
+    if (!isPending) {
+      mutate(routeAPI);
     }
   };
-
-  useEffect(() => {
-    if (!data && !isPending && dataUser?.email) {
-      mutate(route);
-    }
-  }, [data, isPending, dataUser?.email]);
 
   return { data, refresh };
 }
