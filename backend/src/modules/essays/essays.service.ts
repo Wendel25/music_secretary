@@ -1,21 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { CreateEssayDto } from 'src/common/dtos/essays/create-essay.dto';
+import { ListResponsivesService } from './utils/list-responsives/list-responsives.service';
 
 @Injectable()
 export class EssaysService {
-  create(createEssayDto: CreateEssayDto) {
-    return 'This action adds a new essay';
+  constructor(
+    private listResponsivesService: ListResponsivesService
+  ) { }
+
+  async create(createEssayDto: CreateEssayDto) {
+    return await 'This action adds a new essay';
   }
 
-  findAll() {
-    return `This action returns all essays`;
+  async findAll() {
+    return await `This action returns all essays`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} essay`;
+  async responsiveEssays(id_city?: string) {
+    return await this.listResponsivesService.listResponsives(id_city);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} essay`;
+  async remove(id: number) {
+    return await `This action removes a #${id} essay`;
   }
 }

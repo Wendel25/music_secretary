@@ -12,7 +12,7 @@ import {
 import { FormCreateEssays } from "./forms";
 
 export function CreateEssays() {
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
     
   return (
     <div className="flex w-full md:w-auto">
@@ -28,7 +28,7 @@ export function CreateEssays() {
             <DialogDescription />
           </DialogHeader>
 
-          <FormCreateEssays />
+          <FormCreateEssays closed={() => setOpen(false)} />
         </DialogContent>
       </Dialog>
     </div>
