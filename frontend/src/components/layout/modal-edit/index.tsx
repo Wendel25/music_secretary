@@ -15,7 +15,7 @@ interface EditDataProps {
   updateRegister: () => void;
 }
 
-export function ModalEdit({ id, children, updateRegister }: EditDataProps) {
+export function ModalEdit({ children }: EditDataProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>

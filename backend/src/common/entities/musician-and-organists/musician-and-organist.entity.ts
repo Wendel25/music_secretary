@@ -15,7 +15,7 @@ export class MusicianAndOrganistEntities {
     @Column({ type: 'varchar', length: 20 })
     phone: string;
 
-    @OneToOne(() => ChurchEntity, (church) => church.id, { onDelete: 'CASCADE' })
+    @OneToOne(() => ChurchEntity, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'id_church' })
     id_church: ChurchEntity;
 

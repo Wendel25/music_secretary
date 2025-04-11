@@ -15,14 +15,14 @@ export class CreateMusicianAndOrganistDto {
     @IsString()
     @IsNotEmpty()
     @IsUUID()
-    @ApiProperty({ description: 'inform the id for church' })
-    id_church: string;
+    @ApiProperty({ description: 'inform the id for ministry' })
+    id_ministry: string;
 
     @IsString()
     @IsNotEmpty()
     @IsUUID()
-    @ApiProperty({ description: 'inform the id for ministry' })
-    id_ministry: string;
+    @ApiProperty({ description: 'inform the id for church' })
+    id_church: string;
 
     @IsString()
     @IsOptional()

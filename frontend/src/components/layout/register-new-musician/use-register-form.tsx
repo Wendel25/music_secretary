@@ -8,7 +8,7 @@ import { fetchDataRegister } from "@/components/layout/register-new-musician/fet
 
 export interface RegisterFormsProps {
   closed: () => void;
-  route: string;
+  route?: string;
 }
 
 export function useRegisterForm({ closed, route }: RegisterFormsProps) {
@@ -29,7 +29,7 @@ export function useRegisterForm({ closed, route }: RegisterFormsProps) {
     onSuccess: () => {
       showSuccess("Registro criado com sucesso.");
       closed();
-      refreshData(route);
+      refreshData(route || "");
     },
     onError: (error) => showError(error.message || "Ocorreu um erro criar registro"),
   });

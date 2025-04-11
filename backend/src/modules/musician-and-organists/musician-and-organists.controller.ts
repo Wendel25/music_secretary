@@ -35,6 +35,12 @@ export class MusicianAndOrganistsController {
     return await this.musicianAndOrganistsService.findAllOrganists(id_city);
   }
 
+  @Patch()
+  @ApiBearerAuth()
+  async update(@Param('id') id: string, @Body() data: CreateMusicianAndOrganistDto) {
+    return await this.musicianAndOrganistsService.updatData(id, data);
+  }
+
   @Delete(':id')
   @ApiBearerAuth()
   async remove(@Param('id') id: string) {

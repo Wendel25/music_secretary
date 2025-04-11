@@ -3,6 +3,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MusicianAndOrganistEntities } from 'src/common/entities/musician-and-organists/musician-and-organist.entity';
 import { CreateMusicianAndOrganistDto } from 'src/common/dtos/musician-and-organists/create-musician-and-organist.dto';
+import { UUID } from 'typeorm/driver/mongodb/bson.typings';
 
 @Injectable()
 export class MusicianAndOrganistsService {
@@ -52,7 +53,13 @@ export class MusicianAndOrganistsService {
     return filteredList;
   }
 
-  async remove(id: string) {
+  async updatData(id: string, data: CreateMusicianAndOrganistDto) {
+    console.log(data);
+
+    // return await this.musicianRepository.update(id, data);
+  }
+
+  async remove(id: string) {  
     return await this.musicianRepository.delete(id);
   }
 }
