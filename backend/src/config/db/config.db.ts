@@ -1,13 +1,13 @@
+import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { DB_HOST, DB_NAME, DB_PASSWORD, DB_USER } from 'src/config/consts/consts';
 
-export const configDB = (): TypeOrmModuleOptions => ({
+export const configDB = (configService: ConfigService): TypeOrmModuleOptions => ({
     type: 'mariadb',
-    host: DB_HOST,
+    host: configService.get<string>('DB_HOST'),
     port: 3306,
-    username: DB_USER,
-    password: DB_PASSWORD,
-    database: DB_NAME,
+    username: configService.get<string>('DB_USER'),
+    password: configService.get<string>('DB_PASSWORD'),
+    database: configService.get<string>('DB_NAME'),
     entities: [__dirname + '/../../**/*.entity{.ts,.js}'],
     synchronize: false,
     logging: true,

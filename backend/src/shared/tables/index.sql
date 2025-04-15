@@ -24,12 +24,12 @@ CREATE TABLE categories (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE instrument (
+CREATE TABLE instruments (
     id CHAR(36) NOT NULL PRIMARY KEY,
     id_category CHAR(36) NOT NULL,
     value VARCHAR(100) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_category) REFERENCES category(id) ON DELETE CASCADE
+    FOREIGN KEY (id_category) REFERENCES categories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE status (
@@ -49,12 +49,12 @@ CREATE TABLE users (
     first_access_at TIMESTAMP NULL, 
     password_changed_at TIMESTAMP NULL,
     last_login_at TIMESTAMP NULL,
-    login_attempts INT DEFAULT 0,
+    failed_attempts INT DEFAULT 0,
     block_at TIMESTAMP NULL,
     active BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_church) REFERENCES churches(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_ministry) REFERENCES ministries(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_ministry) REFERENCES ministries(id) ON DELETE CASCADE
 );
 
 CREATE TABLE musician (

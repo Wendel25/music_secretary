@@ -23,7 +23,7 @@ export class EssaysController {
   @ApiBearerAuth()
   @ApiQuery({ name: 'id_city', required: false })
   async listResponsiveEssays(@Query('id_city') id_city?: string) {
-    return await this.essaysService.responsiveEssays();
+    return await this.essaysService.responsiveEssays(id_city);
   }
 
   @Delete(':id')
