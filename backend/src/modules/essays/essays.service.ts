@@ -20,6 +20,10 @@ export class EssaysService {
     return await this.listResponsivesService.listResponsives(id_city);
   }
 
+  async presentMinistries(id_city?: string) {
+    return await this.listResponsivesService.presentMinistries(id_city);
+  }
+
   async remove(id: number) {
     return await `This action removes a #${id} essay`;
   }

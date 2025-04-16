@@ -9,4 +9,8 @@ export class ListResponsivesService {
         const response = await this.musicianAndOrganistsService.findAllMusician(id_city);
         return response.filter((item) => item.id_ministry.value === 'Encarregado - Regional' || item.id_ministry.value === 'Encarregado - Local');
     }
+
+    public async presentMinistries(id_city?: string) {
+        console.log(id_city);
+    }
 }
