@@ -26,7 +26,7 @@ export function NewRegisterTableUser() {
                 <Plus /> Novo Usuário
               </Button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="max-h-[90vh] overflow-auto">
               <DialogHeader>
                 <DialogTitle className="text-color_logo">Cadastrar um novo usuário</DialogTitle>
                 <DialogDescription>

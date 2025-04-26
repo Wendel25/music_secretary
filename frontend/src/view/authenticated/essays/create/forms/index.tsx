@@ -2,34 +2,39 @@ import { SelectChurches } from "@/components/layout/selects/church";
 import { useCreateForm } from "./use-create-form";
 import { DateFieldEssays } from "./fields/date";
 import { AssigningResponsible } from "./fields/assigning-responsible";
+import { MinistryProfileSelect } from "./fields/ministry-profile";
+import { ListPresenceMusician } from "./fields/presence-musician";
+import { ButtonLoadingComponent } from "@/components/layout/button-loading";
 
 export interface RegisterCreateProps {
   closed: () => void;
 }
 
 export function FormCreateEssays({ closed }: RegisterCreateProps) {
-  const { errors, setValue } = useCreateForm({
+  const { errors } = useCreateForm({
     closed: closed,
   });
 
-  const handleOptionSelect = (id: string, field: string) => {
-    setValue(`id_${field}` as "name" | "phone" | "id_church" | "id_ministry" | "id_instrument" | "id_status", id);
-  };
+  const isPending = false;
 
   return (
-    <form action="flex flex-col">
-      <div className="grid gap-2 mb-5">
+    <form className="flex flex-col">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <DateFieldEssays />
-      </div>
 
-      <div className="grid gap-2 mb-5">
-        <SelectChurches onSelectedOption={(id) => handleOptionSelect(id, "church")} />
-        {errors.id_church && <span className="text-red-500 text-sm">{errors.id_church?.message}</span>}
-      </div>
+        <div className="grid gap-2">
+          <SelectChurches onSelectedOption={(id) => console.log(id)} />
+          {errors.id_church && <span className="text-red-500 text-sm">{errors.id_church?.message}</span>}
+        </div>
 
-      <div className="">
         <AssigningResponsible />
+
+        <MinistryProfileSelect />
       </div>
+
+      <ListPresenceMusician />
+
+      <ButtonLoadingComponent loading={isPending} nameButton="Cadastrar" />
     </form>
   );
 }

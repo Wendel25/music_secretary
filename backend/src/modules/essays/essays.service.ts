@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateEssayDto } from 'src/common/dtos/essays/create-essay.dto';
-import { ListResponsivesService } from './utils/list-responsives/list-responsives.service';
+import { ListResponsivesService } from './utils/lists/lists.service';
 
 @Injectable()
 export class EssaysService {

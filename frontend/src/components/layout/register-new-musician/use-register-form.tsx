@@ -2,7 +2,7 @@ import { useToast } from "@/hook/use-toast";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { getDataFromAPI } from "@/utils/get-data-api/get-data-from-api";
+import { getDataFromAPI } from "@/utils/populate-table-musician/get-data-from-api";
 import { RegisterSchema, RegisterSchemaType } from "@/schema/registers";
 import { fetchDataRegister } from "@/components/layout/register-new-musician/fetch-data-api";
 

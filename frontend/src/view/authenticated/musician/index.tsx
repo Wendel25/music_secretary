@@ -3,7 +3,7 @@ import { UseForType } from "@/interfaces/data-user";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { LoadingComponent } from "@/components/layout/loading";
 import { SearchUserTable } from "@/utils/input-search-for-table";
-import { getDataFromAPI } from "@/utils/get-data-api/get-data-from-api";
+import { getDataFromAPI } from "@/utils/populate-table-musician/get-data-from-api";
 import { TableMusician } from "@/view/authenticated/musician/table-musician";
 import { ModalRegisterMusician } from "@/components/layout/register-new-musician";
 import { FormNewMusician } from "@/components/layout/register-new-musician/forms-new-musician";

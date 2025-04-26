@@ -1,7 +1,7 @@
 import { useToast } from "@/hook/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { useRegistersStore } from "@/store/registers";
-import { fetchDataTable } from "@/utils/get-data-api/fetch-data-api";
+import { fetchDataTable } from "@/utils/populate-table-musician/fetch-data-api";
 
 export function getDataFromAPI() {
   const { showError } = useToast();

@@ -25,3 +25,12 @@ export interface RegisterDataInterface {
     value: string;
     created_at: string;
 }
+
+export interface OptionsMinistryProfileInterface {
+    id: string;
+    name: string;
+    phone: string | null,
+    created_at: string;
+    id_church: RegisterChurchInterface;
+    id_ministry: RegisterDataInterface;
+}

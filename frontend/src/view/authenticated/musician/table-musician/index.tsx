@@ -5,7 +5,7 @@ import { usePagination } from "@/hook/use-pagination";
 import { useUserStore } from "@/store/search-user-table";
 import { formatPhoneNumber } from "@/utils/formatting/phone";
 import { TableFooterComponent } from "@/components/layout/table-footer";
-import { getDataFromAPI } from "@/utils/get-data-api/get-data-from-api";
+import { getDataFromAPI } from "@/utils/populate-table-musician/get-data-from-api";
 import { ButtonsForActionTable } from "@/components/layout/buttons-for-action-table";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 

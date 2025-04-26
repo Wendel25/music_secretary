@@ -24,7 +24,7 @@ export function FormUpdatePassword() {
         {errors.confirmPassword && <span className="text-red-500 text-sm">{errors.confirmPassword.message}</span>}
       </div>
 
-      <ButtonLoadingComponent loading={isPending} />
+      <ButtonLoadingComponent loading={isPending} nameButton="Alterar Senha" />
     </form>
   );
 }

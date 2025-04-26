@@ -41,7 +41,7 @@ CREATE TABLE status (
 CREATE TABLE ministry_profiles (
     id CHAR(36) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    phone VARCHAR(20) NOT NULL,
+    phone VARCHAR(20) NULL,
     id_church CHAR(36) NOT NULL,
     id_ministry CHAR(36) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

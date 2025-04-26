@@ -22,7 +22,7 @@ export function CreateEssays() {
             <Plus /> Novo Ensaios
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="min-w-[50%] max-h-[90vh] overflow-auto">
           <DialogHeader>
             <DialogTitle className="text-color_logo">Cadastrar novo Ensaio</DialogTitle>
             <DialogDescription />
